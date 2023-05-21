@@ -1,4 +1,4 @@
-package models;
+package com.ftn.sbnz.tim27.model.models;
 
 public class Zanr {
 

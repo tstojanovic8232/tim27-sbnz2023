@@ -1,9 +1,10 @@
-package models;
+package com.ftn.sbnz.tim27.model.models;
 
 import java.util.ArrayList;
 
 public class Korisnik {
     private Long id;
+    private String email;
     private String korisniko_ime;
     private String lozinka;
     private ArrayList<Anime> trenutno_gledanje;
@@ -12,12 +13,13 @@ public class Korisnik {
     private ArrayList<Anime> odustao_gledanje;
     private ArrayList<Anime> crna_lista;
 
-    public Korisnik(){
+    public Korisnik() {
 
     }
 
-    public Korisnik(Long id, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista) {
+    public Korisnik(Long id, String email, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista) {
         this.id = id;
+        this.email = email;
         this.korisniko_ime = korisniko_ime;
         this.lozinka = lozinka;
         this.trenutno_gledanje = trenutno_gledanje;
@@ -33,6 +35,14 @@ public class Korisnik {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getKorisniko_ime() {
@@ -94,7 +104,8 @@ public class Korisnik {
     @Override
     public String toString() {
         return "Korisnik{" +
-                "id='" + id + '\'' +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", korisniko_ime='" + korisniko_ime + '\'' +
                 ", lozinka='" + lozinka + '\'' +
                 ", trenutno_gledanje=" + trenutno_gledanje +
