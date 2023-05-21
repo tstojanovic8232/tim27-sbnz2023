@@ -1,0 +1,65 @@
+import com.ftn.sbnz.tim27.model.models.Zanr
+import com.ftn.sbnz.tim27.model.models.Korisnik
+import com.ftn.sbnz.tim27.model.models.Manga
+import java.util.ArrayList
+import com.ftn.sbnz.tim27.model.models.Autor
+import java.util.HashMap
+
+rule "Nadji najcitaniji zanr mange za korisnika"
+when
+    $korisnik: Korisnik($trenutno_citanje: trenutno_citanje)
+    $manga: Manga(lista_zanrova != null) from $trenutno_citanje
+    $maxCount: Integer() from accumulate(Manga(lista_zanrova != null) from $trenutno_citanje,
+                                         init( int maxCount = 0; ),
+                                         action( if ($manga.getLista_zanrova().size() > maxCount) maxCount = $manga.getLista_zanrova().size(); ),
+                                         result( maxCount ) )
+then
+
+    ArrayList<Zanr> mostReadGenres = new ArrayList<>();
+    for (Manga manga : $trenutno_citanje ) {
+        if (manga.getLista_zanrova().size() == $maxCount) {
+            mostReadGenres.addAll(manga.getLista_zanrova());
+        }
+    }
+
+
+    System.out.println("Najcitaniji zanr mange: " + mostReadGenres);
+
+end
+
+rule "Nadji najcitanijeg autora mange za korisnika"
+when
+    $korisnik: Korisnik($trenutno_citanje: trenutno_citanje)
+    $manga: Manga() from $trenutno_citanje
+then
+    // Calculate author counts
+    ArrayList<String> authors = new ArrayList<>();
+    for (Manga manga : $trenutno_citanje) {
+        String mangaAuthor = manga.getAutor();
+        if (mangaAuthor != null) {
+            authors.add(mangaAuthor);
+        }
+    }
+
+    // Find the most read author
+    if (!authors.isEmpty()) {
+        ArrayList<String> mostReadAuthors = new ArrayList<>();
+        int maxCount = 0;
+        for (String author : authors) {
+            int count = java.util.Collections.frequency(authors, author);
+            if (count > maxCount) {
+                mostReadAuthors.clear();
+                mostReadAuthors.add(author);
+                maxCount = count;
+            } else if (count == maxCount) {
+                mostReadAuthors.add(author);
+            }
+        }
+
+        // Print the most read author(s)
+        System.out.println("Najcitaniji autori: " + mostReadAuthors);
+        // You can also perform further actions based on the most read author(s)
+    } else {
+        System.out.println("No manga authors found.");
+    }
+end

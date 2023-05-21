@@ -8,7 +8,7 @@ public class Manga {
     private String autor;
     private ArrayList<Zanr> lista_zanrova;
 
- 
+
     private Manga(){
 
     }

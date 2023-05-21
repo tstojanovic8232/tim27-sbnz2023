@@ -13,11 +13,17 @@ public class Korisnik {
     private ArrayList<Anime> odustao_gledanje;
     private ArrayList<Anime> crna_lista;
 
+    private ArrayList<Manga> trenutno_citanje;
+    private ArrayList<Manga> istorija2;
+    private ArrayList<Manga> planira_citanje;
+    private ArrayList<Manga> odustao_citanje;
+    private ArrayList<Manga> crna_lista2;
+
     public Korisnik() {
 
     }
 
-    public Korisnik(Long id, String email, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista) {
+    public Korisnik(Long id, String email, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista, ArrayList<Manga> trenutno_citanje, ArrayList<Manga> istorija2, ArrayList<Manga> planira_citanje, ArrayList<Manga> odustao_citanje, ArrayList<Manga> crna_lista2) {
         this.id = id;
         this.email = email;
         this.korisniko_ime = korisniko_ime;
@@ -27,6 +33,11 @@ public class Korisnik {
         this.planira_gledanje = planira_gledanje;
         this.odustao_gledanje = odustao_gledanje;
         this.crna_lista = crna_lista;
+        this.trenutno_citanje = trenutno_citanje;
+        this.istorija2 = istorija2;
+        this.planira_citanje = planira_citanje;
+        this.odustao_citanje = odustao_citanje;
+        this.crna_lista2 = crna_lista2;
     }
 
     public Long getId() {
@@ -101,6 +112,46 @@ public class Korisnik {
         this.crna_lista = crna_lista;
     }
 
+    public ArrayList<Manga> getTrenutno_citanje() {
+        return trenutno_citanje;
+    }
+
+    public void setTrenutno_citanje(ArrayList<Manga> trenutno_citanje) {
+        this.trenutno_citanje = trenutno_citanje;
+    }
+
+    public ArrayList<Manga> getIstorija2() {
+        return istorija2;
+    }
+
+    public void setIstorija2(ArrayList<Manga> istorija2) {
+        this.istorija2 = istorija2;
+    }
+
+    public ArrayList<Manga> getPlanira_citanje() {
+        return planira_citanje;
+    }
+
+    public void setPlanira_citanje(ArrayList<Manga> planira_citanje) {
+        this.planira_citanje = planira_citanje;
+    }
+
+    public ArrayList<Manga> getOdustao_citanje() {
+        return odustao_citanje;
+    }
+
+    public void setOdustao_citanje(ArrayList<Manga> odustao_citanje) {
+        this.odustao_citanje = odustao_citanje;
+    }
+
+    public ArrayList<Manga> getCrna_lista2() {
+        return crna_lista2;
+    }
+
+    public void setCrna_lista2(ArrayList<Manga> crna_lista2) {
+        this.crna_lista2 = crna_lista2;
+    }
+
     @Override
     public String toString() {
         return "Korisnik{" +
@@ -113,6 +164,11 @@ public class Korisnik {
                 ", planira_gledanje=" + planira_gledanje +
                 ", odustao_gledanje=" + odustao_gledanje +
                 ", crna_lista=" + crna_lista +
+                ", trenutno_citanje=" + trenutno_citanje +
+                ", istorija2=" + istorija2 +
+                ", planira_citanje=" + planira_citanje +
+                ", odustao_citanje=" + odustao_citanje +
+                ", crna_lista2=" + crna_lista2 +
                 '}';
     }
 }
