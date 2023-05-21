@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-KjarApplication<kjar>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftn.sbnz.sw60.kjar.KjarApplication",
+      "projectName": "kjar",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ModelApplication<model>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftn.sbnz.sw60.model.ModelApplication",
+      "projectName": "model",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ServiceApplication<service>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftn.sbnz.sw60.service.ServiceApplication",
+      "projectName": "service",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
