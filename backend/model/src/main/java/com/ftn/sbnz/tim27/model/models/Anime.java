@@ -6,7 +6,7 @@ public class Anime {
     private Long id;
     private String naziv;
     private List<Studio> studiji;
-    private List<String> zanrovi;
+    private List<Zanr> zanrovi;
     private String sezona;
     private String godina;
     private String izvor;
@@ -14,7 +14,7 @@ public class Anime {
     public Anime() {
     }
 
-    public Anime(Long id, String naziv, List<Studio> studiji, List<String> zanrovi, String sezona, String godina, String izvor) {
+    public Anime(Long id, String naziv, List<Studio> studiji, List<Zanr> zanrovi, String sezona, String godina, String izvor) {
         this.id = id;
         this.naziv = naziv;
         this.studiji = studiji;
@@ -48,11 +48,11 @@ public class Anime {
         this.studiji = studiji;
     }
 
-    public List<String> getZanrovi() {
+    public List<Zanr> getZanrovi() {
         return zanrovi;
     }
 
-    public void setZanrovi(List<String> zanrovi) {
+    public void setZanrovi(List<Zanr> zanrovi) {
         this.zanrovi = zanrovi;
     }
 
