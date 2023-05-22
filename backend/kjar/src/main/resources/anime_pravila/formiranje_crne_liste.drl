@@ -1,0 +1,6 @@
+package anime_pravila;
+
+rule "negativan feedback"
+    when
+    then
+end
