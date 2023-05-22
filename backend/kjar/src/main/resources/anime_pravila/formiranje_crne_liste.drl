@@ -1,6 +1,31 @@
 package anime_pravila;
+import com.ftn.sbnz.tim27.model.models.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
-rule "negativan feedback"
+rule "negativan feedback za jedan anime"
     when
+        $feedback: Feedback(pozitivan == false, zaZanr == false, tip == "anime", mediaId != null)
+        $korisnik: Korisnik()
+        $anime: Anime(id == $feedback.mediaId)
     then
+        $korisnik.getCrna_lista().add($anime);
 end
+
+rule "negativan feedback za ceo anime zanr"
+    when
+        $feedback: Feedback(pozitivan == false, zaZanr == true, tip == "anime", mediaId != null)
+        $korisnik: Korisnik()
+        $anime: Anime(id == $feedback.mediaId, $zanrovi: zanrovi)
+        $zanr: Zanr() from $zanrovi.get(0)
+        $drugiAnime: List() from collect(Anime($drugiZanrovi: zanrovi contains $zanr, id != $anime.getId()))
+    then
+        $korisnik.getCrna_lista().add($anime);
+        $korisnik.getCrna_lista().addAll($drugiAnime);
+end
+

@@ -1,0 +1,97 @@
+package pravila_preporuka_anime;
+
+import com.ftn.sbnz.tim27.model.models.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Map.Entry;
+
+rule "nadji najgledanije anime zanrove za korisnika"
+when
+    $korisnik: Korisnik($lt: trenutno_gledanje, $li: istorija, $lp: planira_gledanje)
+then
+    Map<String, Integer> zanrCountMap = new HashMap<>();
+
+    for (Object animeObj : $lt) {
+        Anime anime = (Anime) animeObj;
+        List<Object> zanrovi = new ArrayList<Object>(anime.getZanrovi());
+        izbrojiFaktore(zanrovi, zanrCountMap);
+    }
+
+    for (Object animeObj2 : $li) {
+        Anime anime2 = (Anime) animeObj2;
+        List<Object> zanrovi = new ArrayList<Object>(anime2.getZanrovi());
+        izbrojiFaktore(zanrovi, zanrCountMap);
+    }
+
+    for (Object animeObj3 : $lp) {
+        Anime anime3 = (Anime) animeObj3;
+        List<Object> zanrovi = new ArrayList<Object>(anime3.getZanrovi());
+        izbrojiFaktore(zanrovi, zanrCountMap);
+    }
+
+    List<Map.Entry<String, Integer>> sortiraniZanrovi = new ArrayList<>(zanrCountMap.entrySet());
+    Collections.sort(sortiraniZanrovi, Comparator.comparingInt(Map.Entry::getValue));
+
+    List<String> najgledanijiZanrovi = new ArrayList<>();
+    int limit = Math.min(1, sortiraniZanrovi.size());
+    for (int i = sortiraniZanrovi.size() - 1; i >= sortiraniZanrovi.size() - limit; i--) {
+        najgledanijiZanrovi.add(sortiraniZanrovi.get(i).getKey());
+    }
+
+    insert(najgledanijiZanrovi);
+end
+
+rule "nadji najgledanija studija animacije za korisnika"
+when
+    $korisnik: Korisnik($lt: trenutno_gledanje, $li: istorija, $lp: planira_gledanje)
+then
+    Map<String, Integer> studioCountMap = new HashMap<>();
+
+    for (Object animeObj : $lt) {
+        Anime anime = (Anime) animeObj;
+        List<Object> studija = new ArrayList<Object>(anime.getStudiji());
+        izbrojiFaktore(studija, studioCountMap);
+    }
+
+    for (Object animeObj2 : $li) {
+        Anime anime2 = (Anime) animeObj2;
+        List<Object> studija = new ArrayList<Object>(anime2.getStudiji());
+        izbrojiFaktore(studija, studioCountMap);
+    }
+
+    for (Object animeObj3 : $lp) {
+        Anime anime3 = (Anime) animeObj3;
+        List<Object> studija = new ArrayList<Object>(anime3.getStudiji());
+        izbrojiFaktore(studija, studioCountMap);
+    }
+
+    List<Map.Entry<String, Integer>> sortiraniStudiji = new ArrayList<>(studioCountMap.entrySet());
+    Collections.sort(sortiraniStudiji, Comparator.comparingInt(Map.Entry::getValue));
+
+    List<String> najgledanijiStudiji = new ArrayList<>();
+    int limit = Math.min(1, sortiraniStudiji.size());
+    for (int i = sortiraniStudiji.size() - 1; i >= sortiraniStudiji.size() - limit; i--) {
+        najgledanijiStudiji.add(sortiraniStudiji.get(i).getKey());
+    }
+
+    insert(najgledanijiStudiji);
+end
+
+function void izbrojiFaktore(List faktori, Map countMap) {
+    for (Object obj : faktori) {
+        if (obj instanceof Zanr) {
+            Zanr zanr = (Zanr) obj;
+            String naziv = zanr.getNaziv();
+            countMap.put(naziv, (Integer) countMap.getOrDefault(naziv, 0) + 1);
+        }
+        if (obj instanceof Studio) {
+            Studio studio = (Studio) obj;
+            String naziv = studio.getNaziv();
+            countMap.put(naziv, (Integer) countMap.getOrDefault(naziv, 0) + 1);
+        }
+    }
+}

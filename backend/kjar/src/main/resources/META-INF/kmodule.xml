@@ -1,2 +1,8 @@
-<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jboss.org/kie/6.0.0/kmodule">
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="animeKieBase" packages="anime_pravila">
+        <ksession name="animeKieSession" type="stateful" default="true"/>
+    </kbase>
+    <kbase name="animePreporukaKieBase" packages="pravila_preporuka_anime">
+        <ksession name="animePreporukaKieSession" type="stateful" default="true"/>
+    </kbase>
 </kmodule>
