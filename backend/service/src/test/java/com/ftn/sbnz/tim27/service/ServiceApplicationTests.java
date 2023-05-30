@@ -1,4 +1,4 @@
-package com.ftn.sbnz.sw60.service;
+package com.ftn.sbnz.tim27.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

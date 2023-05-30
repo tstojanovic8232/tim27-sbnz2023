@@ -1,0 +1,12 @@
+
+ƒ
+java:S1319"mThe type of "lista_zanrova" should be an interface such as "List" rather than the implementation "ArrayList".(çŸ¶Ø
+‹
+java:S1319/"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¸å½Ãÿÿÿÿÿ
+‚
+java:S13193"mThe type of "lista_zanrova" should be an interface such as "List" rather than the implementation "ArrayList".(ìÇÊ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çŸ¶Ø
+e	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÇÊ
+m	java:S116	"XRename this field "lista_zanrova" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§‰ÎÒ
+h	java:S100/"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸å½Ãÿÿÿÿÿ
+b	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÇÊ

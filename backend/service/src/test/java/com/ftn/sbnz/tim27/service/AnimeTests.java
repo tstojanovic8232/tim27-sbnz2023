@@ -1,14 +1,14 @@
-package com.ftn.sbnz.sw60.service;
+package com.ftn.sbnz.tim27.service;
 import com.ftn.sbnz.tim27.model.models.*;
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
+import org.kie.api.runtime.ClassObjectFilter;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class AnimeTests {
 
@@ -19,7 +19,7 @@ public class AnimeTests {
         KieBase kieBase = kieContainer.getKieBase("animePreporukaKieBase");
 
         KieSession kieSession = kieBase.newKieSession();
-        
+
         Anime anime1 = new Anime();
         anime1.setId(1L);
         anime1.setNaziv("Anime 1");
@@ -49,28 +49,37 @@ public class AnimeTests {
         korisnik.setOdustao_gledanje(new ArrayList<>());
         korisnik.setCrna_lista(new ArrayList<>());
 
+        ZanrBrojac zanrBrojac1 = new ZanrBrojac(new Zanr(1L, "Zanr 1"));
+        ZanrBrojac zanrBrojac2 = new ZanrBrojac(new Zanr(2L, "Zanr 2"));
+
+        StudioBrojac studioBrojac1 = new StudioBrojac(new Studio(1L, "Studio 1"));
+        StudioBrojac studioBrojac2 = new StudioBrojac(new Studio(3L, "Studio 3"));
+
         kieSession.insert(korisnik);
+        kieSession.insert(zanrBrojac1);
+        kieSession.insert(zanrBrojac2);
+        kieSession.insert(studioBrojac1);
+        kieSession.insert(studioBrojac2);
         kieSession.insert(anime1);
         kieSession.insert(anime2);
         kieSession.insert(anime3);
 
         kieSession.fireAllRules();
 
-        List<String> najgledanijiZanrovi = new ArrayList<>();
-        List<String> najgledanijiStudiji = new ArrayList<>();
-        AtomicInteger counter = new AtomicInteger();
+        List<Zanr> najgledanijiZanrovi = new ArrayList<>();
+        List<Studio> najgledanijiStudiji = new ArrayList<>();
 
-        kieSession.getObjects().forEach(obj -> {
-            if (obj instanceof List && ((List<?>) obj).get(0) instanceof String) {
-                List<String> rezultati = (List<String>) obj;
-                if (counter.get() < 1) {
-                    najgledanijiStudiji.addAll(rezultati);
-                } else {
-                    najgledanijiZanrovi.addAll(rezultati);
-                }
-                counter.getAndIncrement();
+
+        for (Object obj : kieSession.getObjects(new ClassObjectFilter(Zanr.class))) {
+            if (obj instanceof Zanr) {
+                najgledanijiZanrovi.add((Zanr) obj);
             }
-        });
+        }
+        for (Object obj : kieSession.getObjects(new ClassObjectFilter(Studio.class))) {
+            if (obj instanceof Studio) {
+                najgledanijiStudiji.add((Studio) obj);
+            }
+        }
 
         System.out.println("Najgledaniji zanrovi: " + najgledanijiZanrovi);
         System.out.println("Najgledaniji studiji: " + najgledanijiStudiji);
@@ -81,7 +90,7 @@ public class AnimeTests {
     }
 
     @Test
-    public void testNegativeFeedbackForOneAnime() {
+    public void testNegativniFeedbackZaJedanAnime() {
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kieContainer = kieServices.getKieClasspathContainer();
         KieBase kieBase = kieContainer.getKieBase("animeKieBase");
@@ -115,7 +124,7 @@ public class AnimeTests {
     }
 
     @Test
-    public void testNegativeFeedbackForWholeAnimeGenre() {
+    public void testNegativniFeedbackZaCeoAnimeZanr() {
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kieContainer = kieServices.getKieClasspathContainer();
         KieBase kieBase = kieContainer.getKieBase("animeKieBase");

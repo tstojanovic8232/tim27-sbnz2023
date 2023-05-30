@@ -1,0 +1,108 @@
+
+‡
+java:S1319"qThe type of "trenutno_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+~
+java:S1319"hThe type of "istorija" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+†
+java:S1319"pThe type of "planira_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+†
+java:S1319"pThe type of "odustao_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+€
+java:S1319"jThe type of "crna_lista" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+†
+java:S1319"pThe type of "trenutno_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+
+java:S1319"iThe type of "istorija2" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+…
+java:S1319"oThe type of "planira_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+…
+java:S1319"oThe type of "odustao_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+
+java:S1319"kThe type of "crna_lista2" should be an interface such as "List" rather than the implementation "ArrayList".(Ö›½Ú
+‹
+java:S1319K"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ù…¡åùÿÿÿÿ
+Œ
+java:S1319O"qThe type of "trenutno_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(ôÚ¼Óøÿÿÿÿ
+‹
+java:S1319S"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ì­—‰üÿÿÿÿ
+~
+java:S1319W"hThe type of "istorija" should be an interface such as "List" rather than the implementation "ArrayList".(ı¥ï˜
+‹
+java:S1319["pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ƒÊÕŸüÿÿÿÿ
+‹
+java:S1319_"pThe type of "planira_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(éäÈúÿÿÿÿ
+‹
+java:S1319c"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(›É±¦úÿÿÿÿ
+‹
+java:S1319g"pThe type of "odustao_gledanje" should be an interface such as "List" rather than the implementation "ArrayList".(ú«Æ¦ûÿÿÿÿ
+†
+java:S1319k"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(´Ïÿø
+…
+java:S1319o"jThe type of "crna_lista" should be an interface such as "List" rather than the implementation "ArrayList".(ê’Õ¹ıÿÿÿÿ
+‹
+java:S1319s"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‹¦¦«ıÿÿÿÿ
+†
+java:S1319w"pThe type of "trenutno_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(Àµ€¾
+…
+java:S1319{"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(§››3
+„
+java:S1319"iThe type of "istorija2" should be an interface such as "List" rather than the implementation "ArrayList".(ãëäùøÿÿÿÿ
+‡
+java:S1319ƒ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(°€Œ€
+…
+java:S1319‡"oThe type of "planira_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(ˆğ«V
+‡
+java:S1319‹"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(…ú¾Ş
+‹
+java:S1319"oThe type of "odustao_citanje" should be an interface such as "List" rather than the implementation "ArrayList".(Ë‡İ®ûÿÿÿÿ
+Œ
+java:S1319“"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(„‡±èùÿÿÿÿ
+‚
+java:S1319—"kThe type of "crna_lista2" should be an interface such as "List" rather than the implementation "ArrayList".(áÅë¨
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö›½Ú
+f	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù§Ğ¨
+k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÚ¼Óøÿÿÿÿ
+k	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éäÈúÿÿÿÿ
+k	java:S117g"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú«Æ¦ûÿÿÿÿ
+k	java:S117o"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê’Õ¹ıÿÿÿÿ
+f	java:S117w"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àµ€¾
+f	java:S117‡"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆğ«V
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë‡İ®ûÿÿÿÿ
+g	java:S117—"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÅë¨
+r	java:S116"XRename this field "korisniko_ime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Û¹›üÿÿÿÿ
+v	java:S116
+"\Rename this field "trenutno_gledanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³â‚°øÿÿÿÿ
+p	java:S116"[Rename this field "planira_gledanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æèı©
+p	java:S116"[Rename this field "odustao_gledanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²íã
+o	java:S116"URename this field "crna_lista" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê¬íÇşÿÿÿÿ
+p	java:S116"[Rename this field "trenutno_citanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ°Ş
+t	java:S116"ZRename this field "planira_citanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åÎ¯Ñüÿÿÿÿ
+o	java:S116"ZRename this field "odustao_citanje" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İˆ¡Ê
+p	java:S116"VRename this field "crna_lista2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ö®»úÿÿÿÿ
+W	java:S107"BConstructor has 14 parameters, which is greater than 7 authorized.(Ö›½Ú
+h	java:S100;"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú™Ó‹ûÿÿÿÿ
+c	java:S100?"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù§Ğ¨
+h	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ù…¡åùÿÿÿÿ
+h	java:S100O"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÚ¼Óøÿÿÿÿ
+h	java:S100["NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÊÕŸüÿÿÿÿ
+h	java:S100_"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éäÈúÿÿÿÿ
+h	java:S100c"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›É±¦úÿÿÿÿ
+h	java:S100g"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú«Æ¦ûÿÿÿÿ
+c	java:S100k"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ïÿø
+h	java:S100o"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê’Õ¹ıÿÿÿÿ
+h	java:S100s"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¦¦«ıÿÿÿÿ
+c	java:S100w"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àµ€¾
+d	java:S100ƒ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°€Œ€
+c	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆğ«V
+d	java:S100‹"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ú¾Ş
+i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë‡İ®ûÿÿÿÿ
+i	java:S100“"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„‡±èùÿÿÿÿ
+d	java:S100—"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áÅë¨
