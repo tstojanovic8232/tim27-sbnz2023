@@ -1,0 +1,30 @@
+package manga_pravila;
+import com.ftn.sbnz.tim27.model.models.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
+rule "negativan feedback za jednu mangu"
+    when
+        $feedback: Feedback(pozitivan == false, zaZanr == false, tip == "manga", mediaId != null)
+        $korisnik: Korisnik()
+        $manga: Manga(id == $feedback.mediaId)
+    then
+        $korisnik.getCrna_lista2().add($manga);
+end
+
+rule "negativan feedback za ceo manga zanr"
+    when
+        $feedback: Feedback(pozitivan == false, zaZanr == true, tip == "anime", mediaId != null)
+        $korisnik: Korisnik()
+        $manga: Manga(id == $feedback.mediaId, $zanrovi: lista_zanrova)
+        $zanr: Zanr() from $zanrovi.get(0)
+        $drugeMange: List() from collect(Manga($drugiZanrovi: lista_zanrova contains $zanr, id != $manga.getId()))
+    then
+        $korisnik.getCrna_lista2().add($manga);
+        $korisnik.getCrna_lista2().addAll($drugeMange);
+end

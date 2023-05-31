@@ -5,4 +5,7 @@
     <kbase name="animePreporukaKieBase" packages="pravila_preporuka_anime">
         <ksession name="animePreporukaKieSession" type="stateful" default="true"/>
     </kbase>
+    <kbase name="mangaPreporukaKieBase" packages="manga_pravila">
+        <ksession name="mangaPreporukaKieSession" type="stateful" default="true"/>
+    </kbase>
 </kmodule>

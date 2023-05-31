@@ -9,7 +9,7 @@ public class Manga {
     private ArrayList<Zanr> lista_zanrova;
 
 
-    private Manga(){
+    public Manga(){
 
     }
 
