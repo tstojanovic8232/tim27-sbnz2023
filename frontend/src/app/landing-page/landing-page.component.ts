@@ -1,4 +1,5 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-landing-page',
@@ -10,7 +11,7 @@ export class LandingPageComponent {
   @ViewChild('rightElement') rightElement!: ElementRef;
   @ViewChild('containerElement') containerElement!: ElementRef;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2,private router:Router) {
   }
 
   ngAfterViewInit() {
@@ -29,5 +30,9 @@ export class LandingPageComponent {
     this.renderer.listen(this.rightElement.nativeElement, 'mouseleave', () => {
       this.renderer.removeClass(this.containerElement.nativeElement, 'hover-right');
     });
+  }
+
+  mangapage() {
+    this.router.navigate(['/manga']);
   }
 }
