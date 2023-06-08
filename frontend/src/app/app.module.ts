@@ -4,7 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MangaComponent } from "./manga/manga.component";
-import { RouterModule } from "@angular/router";
+
+import { AnimeModule } from './anime/anime.module';
+import {RouterModule} from "@angular/router";
+
+
+
 
 @NgModule({
   declarations: [
@@ -15,9 +20,12 @@ import { RouterModule } from "@angular/router";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule // Add RouterModule here
+    RouterModule,
+    AnimeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
