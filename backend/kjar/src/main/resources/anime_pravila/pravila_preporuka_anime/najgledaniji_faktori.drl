@@ -39,9 +39,6 @@ when
     $brojaci: List() from collect(ZanrBrojac())
     $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId()) from $brojaci
 then
-//    modify($zanrBrojac){
-//        brojac = brojac + 1
-//    }
     $zanrBrojac.povecajBrojac();
 end
 
@@ -53,9 +50,6 @@ when
     $brojaci: List() from collect(StudioBrojac())
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
-//    modify($studioBrojac){
-//        brojac = brojac + 1
-//    }
     $studioBrojac.povecajBrojac();
 end
 
@@ -67,9 +61,6 @@ when
     $brojaci: List() from collect(StudioBrojac())
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
-//    modify($studioBrojac){
-//        brojac = brojac + 1
-//    }
     $studioBrojac.povecajBrojac();
 end
 
@@ -81,9 +72,6 @@ when
     $brojaci: List() from collect(StudioBrojac())
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
-//    modify($studioBrojac){
-//        brojac = brojac + 1
-//    }
     $studioBrojac.povecajBrojac();
 end
 
