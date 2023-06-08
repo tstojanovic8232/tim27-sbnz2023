@@ -32,7 +32,5 @@ export class LandingPageComponent {
     });
   }
 
-  mangapage() {
-    this.router.navigate(['/manga']);
-  }
+
 }
