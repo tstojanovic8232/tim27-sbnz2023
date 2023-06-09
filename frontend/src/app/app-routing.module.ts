@@ -9,6 +9,7 @@ import {LoginComponent} from "./anime/components/login/login.component";
 import {BasicAnimePagesComponent} from "./anime/pages/basic-anime-pages/basic-anime-pages.component";
 import {BrowseComponent} from "./anime/components/browse/browse.component";
 import {AboutComponent} from "./anime/components/about/about.component";
+import {MangaDetailsComponent} from "./manga-details/manga-details.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'manga', component: MangaComponent
-  },
+  }
+  ,{ path: 'anime/:id', component: MangaDetailsComponent},
   {
     path: 'anime', component: BasicAnimePagesComponent, children:
       [

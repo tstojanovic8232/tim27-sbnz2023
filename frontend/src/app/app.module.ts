@@ -7,6 +7,10 @@ import { MangaComponent } from "./manga/manga.component";
 
 import { AnimeModule } from './anime/anime.module';
 import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
+import { SectionComponent } from './section/section.component';
+import { MangaDetailsComponent } from './manga-details/manga-details.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -15,13 +19,17 @@ import {RouterModule} from "@angular/router";
   declarations: [
     AppComponent,
     LandingPageComponent,
-    MangaComponent
+    MangaComponent,
+    SectionComponent,
+    MangaDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    AnimeModule
+    AnimeModule,
+    HttpClientModule,
+    NgxPaginationModule
 
   ],
   providers: [],

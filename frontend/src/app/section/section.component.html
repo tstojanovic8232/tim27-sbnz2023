@@ -1,0 +1,25 @@
+<section class="book-store" id="book-store">
+  <div class="row">
+    <div class="main-menu">
+      <br>
+      <div class="archive">Archive</div>
+      <br>
+    </div>
+
+    <div class="book-cards" *ngFor="let manga of mangas">
+      <div class="book-card">
+        <div class="content-wrapper">
+          <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">
+          <div class="card-content">
+            <div class="book-name">{{manga.title}}</div>
+            <div class="book-by">{{manga.producers}}</div>
+            <div class="book-sum card-sum">
+              {{manga.synopsis}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-<nav>
+<nav xmlns:paginate="http://www.w3.org/1999/xhtml" xmlns:paginate="http://www.w3.org/1999/xhtml">
   <a href="">
     <img class="logo" src="https://anilist.co/img/icons/icon.svg" alt="">
   </a>
@@ -15,11 +15,73 @@
   <a href="#" class="button">Recommendations</a>
   <div class="slider">
     <ul>
-      <li><img src="assets/img/manga2.jpg" alt="" /></li>
-      <li><img src="assets/img/manga3.jpg" alt="" /></li>
-      <li><img src="assets/img/manga4.jpg" alt="" /></li>
-      <li><img src="assets/img/manga5.jpg" alt="" /></li>
-      <li><img src="assets/img/manga.jpg" alt="" /></li>
+      <li><img src="assets/img/manga2.jpg" alt=""/></li>
+      <li><img src="assets/img/manga3.jpg" alt=""/></li>
+      <li><img src="assets/img/manga4.jpg" alt=""/></li>
+      <li><img src="assets/img/manga5.jpg" alt=""/></li>
+      <li><img src="assets/img/manga6.jpg" alt=""/></li>
     </ul>
   </div>
 </div>
+
+<section class="book-store" id="book-store">
+  <div class="row">
+    <div class="main-menu">
+      <br>
+      <div class="archive">Most popular</div>
+      <br>
+    </div>
+
+    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">
+      <div class="book-card">
+        <div class="content-wrapper">
+          <a routerLink="/anime/{{manga.mal_id}}">
+            <img src="{{manga.images.jpg.large_image_url}}" alt="" class="book-card-img">
+          </a>
+          <div class="card-content">
+            <div class="book-name">{{manga.title}}</div>
+
+            <div class="book-by">Rank:{{manga.rank}}</div>
+
+            <div class="book-sum card-sum">
+              {{manga.synopsis}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--<section class="book-store" id="book-store">-->
+<!--  <div class="row">-->
+<!--    <div class="main-menu">-->
+<!--      <br>-->
+<!--      <div class="archive">Archive</div>-->
+<!--      <br>-->
+<!--    </div>-->
+
+<!--    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">-->
+<!--      <div class="book-card">-->
+<!--        <div class="content-wrapper">-->
+<!--          <a routerLink="/anime/{{manga.mal_id}}">-->
+<!--          <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">-->
+<!--          </a>-->
+<!--          <div class="card-content">-->
+<!--            <div class="book-name">{{manga.title}}</div>-->
+
+<!--            <div class="book-by">Rank:{{manga.rank}}</div>-->
+
+<!--            <div class="book-sum card-sum">-->
+<!--              {{manga.synopsis}}-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<!--<app-section></app-section>-->
+
