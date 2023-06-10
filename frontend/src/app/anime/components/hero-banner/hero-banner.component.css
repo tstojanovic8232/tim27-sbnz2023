@@ -32,7 +32,6 @@
   justify-content: center;
   align-content: center;
   color: white;
-  background-color: rgba(43, 43, 43, 0.5);
 }
 
 .text h1 {
@@ -45,17 +44,14 @@
 
 
 #slide1 {
-  background-image: url("src/assets/img/anime.jpg");
-  background-position: center;
+  background: linear-gradient(to top,rgba(43, 43, 43, 1), rgba(0, 0, 0, 0)), url("src/assets/img/anime.jpg") center;
 }
 
 #slide2 {
-  background-image: url("src/assets/img/anime2.jpg");
-  background-position: center;
+  background: linear-gradient(to top,rgba(43, 43, 43, 1), rgba(0, 0, 0, 0)),  url("src/assets/img/anime2.jpg") center;
 }
 
 #slide3 {
-  background-image: url("src/assets/img/anime3.jpg");
-  background-position: center;
+  background: linear-gradient(to top,rgba(43, 43, 43, 1), rgba(0, 0, 0, 0)),  url("src/assets/img/anime3.jpg") center;
   background-size: contain;
 }
