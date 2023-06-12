@@ -9,31 +9,25 @@
 
   <div class="card-header">
     <h3 class="card-title" style="margin-left: 20px">{{ manga.data.title }}</h3>
-
-  </div>
-  <div class="card-body">
-    <p class="card-text text-center fs-4" style="margin-top: 40px; margin-left: 300px">
-      <small class="text-muted" style="margin-left: 10px">
-        <span class="badge badge-pill bg-primary me-3" style="margin-left: 10px;font-size: 18px;color:black ">
+    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">Genres:</span>
+    <span class="badge badge-pill bg-danger me-3" style="margin-left: 5px;font-size: 20px;color: black "
+          *ngFor="let genre of manga.data.genres; let last = last">
+             {{genre.name}}
+      <ng-container *ngIf="!last">, </ng-container>
+        </span>
+    <span class="badge badge-pill bg-primary me-3" style="margin-left: 10px;font-size: 18px;color:black ">
          Type: {{ manga.data.type }}
         </span>
 
-        <span class="badge badge-pill bg-success me-3" style="margin-left: 20px;font-size: 18px;color: black ">
+    <span class="badge badge-pill bg-success me-3" style="margin-left: 20px;font-size: 18px;color: black ">
           Score: {{ manga.data.score }}
         </span>
-        <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">
+    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">
           Status: {{ manga.data.status }}
         </span>
-        <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">Genres:</span>
-        <span class="badge badge-pill bg-danger me-3" style="margin-left: 5px;font-size: 20px;color: black "
-              *ngFor="let genre of manga.data.genres; let last = last">
-             {{genre.name}}
-          <ng-container *ngIf="!last">, </ng-container>
-        </span>
+  </div>
+  <div class="card-body">
 
-
-      </small>
-    </p>
     <div class="row">
       <div class="col-lg-2 col-md-12 col-sm-12 text-center order-0">
         <img class="img-fluid" src="{{ manga.data.images.jpg.image_url }}" alt="{{ manga.data.title }}"

@@ -15,7 +15,10 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { NavbarmangaComponent } from './navbarmanga/navbarmanga.component';
 import { BrowseMangaComponent } from './browse-manga/browse-manga.component';
 import {FormsModule} from "@angular/forms";
-import { LoginMangaComponent } from './login-manga/login-manga.component';
+import {LoginComponent} from "./login/login.component";
+
+
+
 
 
 
@@ -30,13 +33,13 @@ import { LoginMangaComponent } from './login-manga/login-manga.component';
     MangaDetailsComponent,
     NavbarmangaComponent,
     BrowseMangaComponent,
-    LoginMangaComponent
+    LoginComponent
+
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         RouterModule,
-        AnimeModule,
         HttpClientModule,
         NgxPaginationModule,
         FormsModule

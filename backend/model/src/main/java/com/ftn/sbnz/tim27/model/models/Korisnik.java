@@ -1,8 +1,20 @@
 package com.ftn.sbnz.tim27.model.models;
 
+
+
+
+import javax.persistence.*;
+import javax.persistence.Entity;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Korisnik {
+
+@Entity
+public class Korisnik implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String email;
     private String korisniko_ime;
