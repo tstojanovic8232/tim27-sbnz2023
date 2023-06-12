@@ -6,11 +6,15 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MangaComponent } from "./manga/manga.component";
 
 import { AnimeModule } from './anime/anime.module';
-import {RouterModule} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import { SectionComponent } from './section/section.component';
 import { MangaDetailsComponent } from './manga-details/manga-details.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { NavbarmangaComponent } from './navbarmanga/navbarmanga.component';
+import { BrowseMangaComponent } from './browse-manga/browse-manga.component';
+import {FormsModule} from "@angular/forms";
+import { LoginMangaComponent } from './login-manga/login-manga.component';
 
 
 
@@ -21,17 +25,22 @@ import {NgxPaginationModule} from "ngx-pagination";
     LandingPageComponent,
     MangaComponent,
     SectionComponent,
-    MangaDetailsComponent
+    MangaDetailsComponent,
+    NavbarmangaComponent,
+    BrowseMangaComponent,
+    LoginMangaComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    AnimeModule,
-    HttpClientModule,
-    NgxPaginationModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        AnimeModule,
+        HttpClientModule,
+        NgxPaginationModule,
+        FormsModule
 
-  ],
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

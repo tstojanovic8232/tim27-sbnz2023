@@ -1,30 +1,65 @@
-<nav xmlns:paginate="http://www.w3.org/1999/xhtml" xmlns:paginate="http://www.w3.org/1999/xhtml">
-  <a href="">
-    <img class="logo" src="https://anilist.co/img/icons/icon.svg" alt="">
-  </a>
-  <a href="">Home</a>
-  <a href="">Manga List</a>
-  <a href="">Browse</a>
-  <a href="">Login</a>
-  <a href="">Sign up</a>
+<app-navbarmanga></app-navbarmanga>
+<div class="split" >
 
-</nav>
-<div class="split">
-  <h1>Manga</h1>
-  <br><br>
-  <a href="#" class="button">Recommendations</a>
-  <div class="slider">
+  <div class="slider" >
     <ul>
-      <li><img src="assets/img/manga2.jpg" alt=""/></li>
-      <li><img src="assets/img/manga3.jpg" alt=""/></li>
-      <li><img src="assets/img/manga4.jpg" alt=""/></li>
-      <li><img src="assets/img/manga5.jpg" alt=""/></li>
-      <li><img src="assets/img/manga6.jpg" alt=""/></li>
+      <li >
+        <div class="darken"> <img src="assets/img/manga2.jpg"alt=""/></div>
+
+        <div class="slider-text">NARUTO<button class="btn-hover slider-button" ><a [routerLink]="'/manga/' + 11" style="text-decoration: none;color: white">Read more</a></button></div>
+
+        <div class="slider-about" >The story delves into Naruto's growth as a ninja, his quest for recognition, and his journey to protect his loved ones and the village. Along the way, Naruto discovers the truth about his heritage, uncovers dark secrets, and faces the consequences of his choices. He forms friendships, develops rivalries, and learns valuable life lessons about determination, friendship, and the meaning of being a true ninja.</div>
+      <li>
+        <div class="darken"> <img src="assets/img/manga3.jpg" alt=""/></div>
+
+        <div class="slider-text">BLEACH<button class="btn-hover slider-button"><a [routerLink]="'/manga/' + 12" style="text-decoration: none;color: white">Read more</a></button></div>
+      <div class="slider-about" > The story centers around Ichigo Kurosaki, a teenager with the ability to see ghosts. One day, he unintentionally obtains the powers of a Soul Reaper, a celestial being responsible for protecting the living world from malevolent spirits known as Hollows.
+      As Ichigo embraces his new role as a Soul Reaper, he embarks on various missions to defend humanity from Hollow attacks.</div>
+      <li>
+        <div class="darken"><img src="assets/img/manga4.jpg" alt=""/></div>
+
+        <div class="slider-text">BLUE LOCK<button class="btn-hover slider-button"><a [routerLink]="'/manga/' + 114745" style="text-decoration: none;color: white">Read more</a></button></div>
+        <div class="slider-about" >The protagonist, Yoichi Isagi, is a talented high school soccer player who gets recruited by Blue Lock. He finds himself in a unique training facility, where 300 other skilled strikers from across the country have also been selected. These players must compete against each other in intense matches and training sessions to earn a spot on the national team.</div>
+
+      </li>
+      <li>
+        <div class="darken"> <img src="assets/img/manga5.jpg" alt=""/></div>
+
+        <div class="slider-text">BLACK CLOVER<button class="btn-hover slider-button"><a [routerLink]="'/manga/' + 86337" style="text-decoration: none;color: white">Read more</a></button></div>
+        <div class="slider-about" >Despite his lack of magic, Asta dreams of becoming the Wizard King, the highest-ranking mage in the kingdom. He possesses an unwavering determination and an incredible physical strength that compensates for his magical deficiency. Asta's journey begins when he receives a rare five-leaf clover grimoire, which grants him the power of anti-magic, allowing him to nullify and repel magical spells.</div>
+      </li>
+      <li>
+        <div class="darken"> <img src="assets/img/manga6.jpg" alt=""/></div>
+
+        <div class="slider-text">VINLAND SAGA<button class="btn-hover slider-button"><a [routerLink]="'/manga/' + 642" style="text-decoration: none;color: white">Read more</a></button></div>
+        <div class="slider-about" >Set during the Viking Age, the story follows the life of Thorfinn, a young Viking warrior seeking revenge against Askeladd,the mercenary leader who killed his father.
+          Thorfinn, once a fearless and ruthless warrior, becomes entangled in a series of battles and conflicts as he travels with Askeladd's band of warriors. Over time, he begins to question the path of violence and vengeance he has chosen.</div>
+      </li>
     </ul>
   </div>
 </div>
 
-<section class="book-store" id="book-store">
+<!--<div class="wrapper" >-->
+
+<!--  <h2><strong>Most popular</strong></h2>-->
+
+<!--  <div class="cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">-->
+
+<!--    <figure class="card">-->
+
+<!--      <img src="{{manga.images.jpg.image_url}}" />-->
+
+<!--      <figcaption>{{manga.title}}</figcaption>-->
+
+<!--    </figure>-->
+
+
+<!--  </div>-->
+
+<!--</div>-->
+
+
+<section >
   <div class="row">
     <div class="main-menu">
       <br>
@@ -35,12 +70,24 @@
     <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">
       <div class="book-card">
         <div class="content-wrapper">
-          <a routerLink="/anime/{{manga.mal_id}}">
-            <img src="{{manga.images.jpg.large_image_url}}" alt="" class="book-card-img">
+          <a routerLink="/manga/{{manga.mal_id}}">
+            <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">
           </a>
           <div class="card-content">
             <div class="book-name">{{manga.title}}</div>
-
+            <div class="book-by">Authors:
+              <span *ngFor="let author of manga.authors; let last = last">
+                    {{author.name}}
+                <ng-container *ngIf="!last">, </ng-container>
+                  </span>
+            </div>
+            <div class="book-by">Genres:
+              <span *ngFor="let genre of manga.genres; let last = last">
+                    {{genre.name}}
+                <ng-container *ngIf="!last">, </ng-container>
+                  </span>
+            </div>
+<!--            <div class="book-name">Chapters:{{manga.chapters}} Volumes:{{manga.volumes}}</div>-->
             <div class="book-by">Rank:{{manga.rank}}</div>
 
             <div class="book-sum card-sum">
@@ -54,34 +101,39 @@
   </div>
 </section>
 
-<!--<section class="book-store" id="book-store">-->
-<!--  <div class="row">-->
-<!--    <div class="main-menu">-->
-<!--      <br>-->
-<!--      <div class="archive">Archive</div>-->
-<!--      <br>-->
-<!--    </div>-->
 
-<!--    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">-->
-<!--      <div class="book-card">-->
-<!--        <div class="content-wrapper">-->
-<!--          <a routerLink="/anime/{{manga.mal_id}}">-->
-<!--          <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">-->
-<!--          </a>-->
-<!--          <div class="card-content">-->
-<!--            <div class="book-name">{{manga.title}}</div>-->
 
-<!--            <div class="book-by">Rank:{{manga.rank}}</div>-->
 
-<!--            <div class="book-sum card-sum">-->
-<!--              {{manga.synopsis}}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
 
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-<!--<app-section></app-section>-->
+
+<!--&lt;!&ndash;<section class="book-store" id="book-store">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="main-menu">&ndash;&gt;-->
+<!--&lt;!&ndash;      <br>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="archive">Archive</div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <br>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="book-card">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="content-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a routerLink="/anime/{{manga.mal_id}}">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">&ndash;&gt;-->
+<!--&lt;!&ndash;          </a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="card-content">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="book-name">{{manga.title}}</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="book-by">Rank:{{manga.rank}}</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="book-sum card-sum">&ndash;&gt;-->
+<!--&lt;!&ndash;              {{manga.synopsis}}&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</section>&ndash;&gt;-->
+<!--&lt;!&ndash;<app-section></app-section>&ndash;&gt;-->
 

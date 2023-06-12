@@ -23,8 +23,5 @@ export class MangaDetailsComponent {
     this.animeService.getManga(id).subscribe((manga) => (this.manga = manga));
   }
 
-  goBack():void{
-    console.log(this.location);
-    this.location.back();
-  }
+
 }

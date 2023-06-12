@@ -1,0 +1,93 @@
+<app-navbarmanga></app-navbarmanga>
+<!--<div class="main">-->
+<!--  <div *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}" class="el">-->
+<!--    <img src="{{manga.images.jpg.image_url}}">-->
+<!--    <h3>{{ manga.title }}</h3>-->
+<!--  </div>-->
+<!--</div>-->
+<!-- Main Section -->
+
+
+
+
+<h1 align="center">Filtering</h1>
+<input id="search"align="center" name="search" type="text" [(ngModel)]="searchText" (input)="search()" placeholder="Search manga title"  >
+<br><br>
+<div class="genre-buttons">
+<!--  <button class="genre" (click)="filterByGenre(0)">All</button>-->
+
+  <button class="genre genre-action" (click)="getActionMangas()">Action</button>
+  <button class="genre genre-adventure" (click)="getAdvantureMangas()">Adventure</button>
+  <button class="genre genre-fantasy" (click)="getFantasy()">Fantasy</button>
+  <button class="genre genre-romance" (click)="getRomance()">Romance</button>
+  <button class="genre genre-comedy" (click)="getComedy()">Comedy</button>
+  <button class="genre genre-shounen" (click)="getShounen()">Shounen</button>
+  <button class="genre genre-shoujo" (click)="getShojo()">Shojo</button>
+  <button class="genre genre-seinen" (click)="getSeinen()">Seinen</button>
+  <button class="genre genre-supernatural" (click)="getSupernatural()">Supernatural</button>
+  <button class="genre genre-mystery" (click)="getMystery()">Mystery</button>
+  <button class="genre genre-horror" (click)="getHorror()">Horror</button>
+  <button class="genre genre-sports" (click)="getSport()">Sports</button>
+  <button class="genre genre-mecha" (click)="getMecha()">Mecha</button>
+  <button class="genre genre-military" (click)="getMilitary()">Military</button>
+  <button class="genre genre-psychological" (click)="getPsychological()">Psychological</button>
+</div>
+
+<!--<div *ngIf="manga && manga.data && manga.data.genres">-->
+<!--  <div *ngFor="let genre of manga.data.genres; let last = last">-->
+<!--    <a href="" class="genre">{{genre.name}}</a>-->
+<!--    <ng-container *ngIf="!last">, </ng-container>-->
+<!--  </div>-->
+<!--</div>-->
+<br><br>
+<div class="page-container">
+<div id="main-container" class="main-container nav-effect-1">
+
+
+
+    <div class="page-title category-title">
+      <!-- <h1>Book Viewer</h1> -->
+    </div>
+
+
+    <div class="grid-shuffle">
+      <ul id="grid" class="row">
+
+        <li class="book-item small-12 medium-6 columns"
+            *ngFor="let manga of filteredMangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage: currentpage, totalItems:maxCount}"
+
+            data-groups='["classic"]' data-date-created='1937' data-title='' data-color='#fcc278'>
+
+        <div class="bk-img">
+            <div class="bk-wrapper">
+              <div class="bk-book bk-bookdefault">
+                <div class="bk-front">
+                  <div class="bk-cover"
+                       [ngStyle]="{ 'background-image': 'url(' + manga.images.jpg.image_url + ')' }"></div>
+                </div>
+                <div class="bk-back"></div>
+                <div class="bk-left"></div>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <h3 class="book-item_title">{{manga.title}}</h3>
+            <p class="author" *ngFor="let author of manga.authors; let last = last">
+              {{ author.name }}
+              <ng-container *ngIf="!last">,</ng-container>
+            </p>
+            <p>{{manga.synopsis}}</p>
+            <a routerLink="/manga/{{manga.mal_id}}" class="button ">Details</a>
+            <a routerLink="/manga/{{manga.mal_id}}" class="addbtn ">Add to your list</a>
+          </div>
+
+
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+

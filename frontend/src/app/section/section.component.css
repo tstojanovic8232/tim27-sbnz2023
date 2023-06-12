@@ -208,20 +208,9 @@
   }
 }
 
-@media (max-width: 725px) {
-  .browse-category, .search-bar {
-    display: none;
-  }
-  .header-title {
-    margin-right: auto;
-  }
-  .book-cards {
-    grid-template-columns: 1fr;
-  }
-  .book-types {
-    display: none;
-  }
-}
+
+
+
 
 @media (max-width: 372px)  {
   .card-content {

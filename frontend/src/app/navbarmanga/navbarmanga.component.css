@@ -1,0 +1,44 @@
+nav {
+  align-items: center;
+  background-color: #152232;
+  display: flex;
+  flex-direction: row;
+  height: 68px;
+  justify-content: center;
+
+
+}
+
+nav a {
+  text-decoration: none;
+  color: #a0b1c5;
+  font-family: Overpass;
+  font-size: 0.9em;
+  margin: 0 16px;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 12em;
+  width: auto;
+}
+
+.search-icon {
+  color: #777a9e;
+  /*   color: #d3d5f3; */
+  height: 1.17rem;
+  margin: 0 1em 0 12em;
+}
+
+.profile-picture {
+  border-radius: 3px;
+  height: 38px;
+  object-fit: cover;
+  width: 38px;
+}
+
+.notification-pill {
+  background-color: #fa7a7a;
+  border-radius: 100%;
+  padding: 0.1em;
+}

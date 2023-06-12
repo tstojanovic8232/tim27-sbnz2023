@@ -1,5 +1,6 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {Manga, MangaService} from "../manga.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-manga',
@@ -13,15 +14,16 @@ export class MangaComponent {
   p:number = 1;
   count:number = 30;
   maxCount:number|any;
-
+  itemsPerPage: number = 10; // Number of items to display per page
+  totalItems: number|any; // Total number of items
   pId:number|any;
   apiNum:number|any;
-  constructor(private mangaService:MangaService) { }
+  constructor(private mangaService:MangaService,private router:Router) { }
 
   ngOnInit(): void {
     // this.getMangas();
     this.getMostPopularMangas();
-    this.getPaginationCount()
+
   }
 
   getMangas() {
@@ -35,36 +37,24 @@ export class MangaComponent {
   }
   getMostPopularMangas() {
     this.mangaService
-      .getMostPopularMangas()
+      .getMangas()
       .subscribe((response) => (this.mangas = response.data),null,()=>{
         console.log(this.mangas)
       });
     this.dataLoaded = true;
     console.log(this.mangas)
   }
-  getPaginationCount() {
-    this.mangaService
-      .getPagination()
-      .subscribe((response) => {
-        this.maxCount = response.pagination.last_visible_page;
-      });
+
+
+
+
+
+
+
+
+  goToManga(mal_id: any) {
+    // this.router.navigate(['/manga', mal_id]);
+    console.log('sdaasd')
   }
-
-
-
-  getNextAnimes(pr:number) {
-    this.mangaService
-      .getNextMangas(pr)
-      .subscribe((response) => {
-        (this.mangas = response.data)
-      });
-    this.dataLoaded = true;
-  }
-
-  handlePageChange(event: number) {
-    this.getNextAnimes(event);
-  }
-
-
 
 }
