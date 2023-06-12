@@ -9,8 +9,6 @@ q
 Amodel/src/main/java/com/ftn/sbnz/tim27/model/models/Feedback.java,a\b\abd813f438eb63843da26644521d4f0c79993bfd
 n
 >model/src/main/java/com/ftn/sbnz/tim27/model/models/Manga.java,9\d\9d06d9c1b6162c20bf47fde346b0a3a1b7bd38e1
-q
-Amodel/src/main/java/com/ftn/sbnz/tim27/model/models/Korisnik.java,9\4\945ef3bcf01bffca521a3bc6a5392cb50b654753
 n
 >model/src/main/java/com/ftn/sbnz/tim27/model/models/Anime.java,b\3\b3198264584302f10e5cd0e3d59413ba2f60c2e1
 =

@@ -1,4 +1,4 @@
-package com.ftn.sbnz.tim27.service;
+package com.ftn.sbnz.tim27.model.repos;
 
 import com.ftn.sbnz.tim27.model.models.Korisnik;
 import org.springframework.data.jpa.repository.JpaRepository;
