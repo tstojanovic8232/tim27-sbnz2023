@@ -1,7 +1,13 @@
 <div class="root">
-  <div class="filtering-sorting">
-    <p>filter-sort works!</p>
+  <div class="filter-sort">
+    <div class="filter-chips">
+      <span class="chip" *ngFor="let filter of filters">{{ filter }}</span>
+    </div>
+    <div class="sort-chips">
+      <span class="chip" *ngFor="let sort of sorts">{{ sort }}</span>
+    </div>
   </div>
+
   <div class="grid-container">
     <div *ngFor="let anime of data" class="grid-item">
       <img [src]="anime.image" alt="Anime Image"/>

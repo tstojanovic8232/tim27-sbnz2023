@@ -17,11 +17,3 @@ n
 model/pom.xml,8\c\8ca5b0c27ca750eb5be7a77252c19a67e5c88065
 ?
 service/pom.xml,a\1\a1f4042fbcf78e2ab86d486176a2378cd0a26e9a
-p
-@service/src/test/java/com/ftn/sbnz/tim27/service/AnimeTests.java,9\9\996d9983ec648e4a3f89a4cd304aa8dc60501c11
-p
-@service/src/test/java/com/ftn/sbnz/tim27/service/MangaTests.java,b\9\b9df1357e8130f9c253a7fa0c0379b65467e96c8
-u
-Emodel/src/main/java/com/ftn/sbnz/tim27/model/models/StudioBrojac.java,0\d\0d8131464502ee1583197862fcf07c900f458c33
-s
-Cmodel/src/main/java/com/ftn/sbnz/tim27/model/models/ZanrBrojac.java,a\c\acea980c153afbcda080eb65de655ad60588718e

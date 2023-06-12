@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MangaComponent } from "./manga/manga.component";
+import {SignupComponent} from './signup/signup.component';
 
 import { AnimeModule } from './anime/anime.module';
 import {Router, RouterModule} from "@angular/router";
@@ -24,6 +25,7 @@ import { LoginMangaComponent } from './login-manga/login-manga.component';
     AppComponent,
     LandingPageComponent,
     MangaComponent,
+    SignupComponent,
     SectionComponent,
     MangaDetailsComponent,
     NavbarmangaComponent,

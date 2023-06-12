@@ -13,9 +13,11 @@ export class BrowseComponent {
   data: TopAnimeItem[] = [];
   lastVisiblePage: number = 0;
   totalPages: number[] = [];
+  filters: string[] = [];
+  sorts: string[] = [];
 
   constructor(private http: HttpClient) {
-    let url = `${this.apiUrl}?order_by=score&sort=desc&page=${this.currentPage}&sfw`;
+    let url = `${this.apiUrl}?sfw&order_by=score&sort=desc&page=${this.currentPage}`;
     this.http.get(url).subscribe((response: any) => {
       const totalItems = response.pagination.items.total;
       const perPage = response.pagination.items.per_page;
@@ -26,13 +28,16 @@ export class BrowseComponent {
     });
   }
 
+  fetchFiltersSorts() {
+
+  }
+
   ngOnInit(): void {
-    this.fetchData();
   }
 
   fetchData(): void {
     this.data = [];
-    let url = `${this.apiUrl}?order_by=score&sort=desc&page=${this.currentPage}&sfw`;
+    let url = `${this.apiUrl}?sfw&order_by=score&sort=desc&page=${this.currentPage}`;
     this.http.get(url).subscribe((response: any) => {
       for (const item of response.data) {
         this.addItemToData(item);

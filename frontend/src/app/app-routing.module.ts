@@ -3,14 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {MangaComponent} from "./manga/manga.component";
 
-
 import {BasicHomePageComponent} from "./anime/pages/basic-home-page/basic-home-page.component";
-import {LoginComponent} from "./anime/components/login/login.component";
 import {BasicAnimePagesComponent} from "./anime/pages/basic-anime-pages/basic-anime-pages.component";
 import {BrowseComponent} from "./anime/components/browse/browse.component";
 import {AboutComponent} from "./anime/components/about/about.component";
 import {MangaDetailsComponent} from "./manga-details/manga-details.component";
 import {BrowseMangaComponent} from "./browse-manga/browse-manga.component";
+import {SignupComponent} from "./signup/signup.component";
 
 
 const routes: Routes = [
@@ -28,16 +27,13 @@ const routes: Routes = [
   }
   ,{ path: 'manga/:id', component: MangaDetailsComponent},
   {
+    path: 'signup', component: SignupComponent
+  },
+  {
     path: 'anime', component: BasicAnimePagesComponent, children:
       [
         {
           path: '', component: BasicHomePageComponent
-        },
-        {
-        path: 'signup', component: LoginComponent
-        },
-        {
-          path: 'login', component: LoginComponent
         },
         {
           path: 'browse', component: BrowseComponent
