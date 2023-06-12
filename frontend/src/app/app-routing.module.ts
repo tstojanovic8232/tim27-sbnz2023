@@ -5,12 +5,13 @@ import {MangaComponent} from "./manga/manga.component";
 
 
 import {BasicHomePageComponent} from "./anime/pages/basic-home-page/basic-home-page.component";
-import {LoginComponent} from "./anime/components/login/login.component";
+
 import {BasicAnimePagesComponent} from "./anime/pages/basic-anime-pages/basic-anime-pages.component";
 import {BrowseComponent} from "./anime/components/browse/browse.component";
 import {AboutComponent} from "./anime/components/about/about.component";
 import {MangaDetailsComponent} from "./manga-details/manga-details.component";
 import {BrowseMangaComponent} from "./browse-manga/browse-manga.component";
+import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'manga', component: MangaComponent
   },
+
+  {
+    path: 'login', component: LoginComponent
+  },
   {
     path:'browsemanga',component:BrowseMangaComponent
   }
@@ -33,9 +38,7 @@ const routes: Routes = [
         {
           path: '', component: BasicHomePageComponent
         },
-        {
-        path: 'signup', component: LoginComponent
-        },
+
         {
           path: 'login', component: LoginComponent
         },
