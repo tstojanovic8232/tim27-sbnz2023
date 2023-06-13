@@ -4,6 +4,7 @@ import com.ftn.sbnz.tim27.model.models.*;
 import java.util.List;
 
 rule "prebroji anime zanrove iz trenutne liste korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: trenutno_gledanje)
     $anime: Anime(zanrovi != null, !zanrovi.isEmpty()) from $animeLista
@@ -11,13 +12,12 @@ when
     $brojaci: List() from collect(ZanrBrojac())
     $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId()) from $brojaci
 then
-//    modify($zanrBrojac){
-//        brojac = brojac + 1
-//    }
     $zanrBrojac.povecajBrojac();
+//    System.out.println($zanrBrojac);
 end
 
 rule "prebroji anime zanrove iz istorije gledanja korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: istorija)
     $anime: Anime(zanrovi != null, !zanrovi.isEmpty()) from $animeLista
@@ -25,13 +25,12 @@ when
     $brojaci: List() from collect(ZanrBrojac())
     $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId()) from $brojaci
 then
-//    modify($zanrBrojac){
-//        brojac = brojac + 1
-//    }
     $zanrBrojac.povecajBrojac();
+//    System.out.println($zanrBrojac);
 end
 
 rule "prebroji anime zanrove iz liste planiranih naslova korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: planira_gledanje)
     $anime: Anime(zanrovi != null, !zanrovi.isEmpty()) from $animeLista
@@ -40,9 +39,11 @@ when
     $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId()) from $brojaci
 then
     $zanrBrojac.povecajBrojac();
+//    System.out.println($zanrBrojac);
 end
 
 rule "prebroji anime studija iz trenutne liste korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: trenutno_gledanje)
     $anime: Anime(studiji != null) from $animeLista
@@ -51,9 +52,11 @@ when
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
     $studioBrojac.povecajBrojac();
+//    System.out.println($studioBrojac);
 end
 
 rule "prebroji anime studija iz istorije gledanja korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: istorija)
     $anime: Anime(studiji != null) from $animeLista
@@ -62,9 +65,11 @@ when
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
     $studioBrojac.povecajBrojac();
+//    System.out.println($studioBrojac);
 end
 
 rule "prebroji anime studija iz liste planiranih naslova korisnika"
+salience 20
 when
     $korisnik: Korisnik($animeLista: planira_gledanje)
     $anime: Anime(studiji != null) from $animeLista
@@ -73,9 +78,11 @@ when
     $studioBrojac: StudioBrojac(studio.id == $studio.getId()) from $brojaci
 then
     $studioBrojac.povecajBrojac();
+//    System.out.println($studioBrojac);
 end
 
 rule "nadji najgledaniji anime zanr"
+salience 15
 when
     $zanrBrojaci: List() from collect(ZanrBrojac())
     $maxBrojac: Integer() from accumulate(
@@ -86,12 +93,16 @@ when
         ZanrBrojac(brojac == $maxBrojac) from $zanrBrojaci
     )
     not(ZanrBrojac(brojac > $maxBrojac) from $zanrBrojaci)
-    $najgledanijiZanr: ZanrBrojac() from $najgledanijiZanrovi.get(0)
 then
-    insert($najgledanijiZanr.getZanr());
+//    System.out.println($najgledanijiZanrovi);
+    for (Object item : $najgledanijiZanrovi) {
+//        System.out.println(((ZanrBrojac)item).getZanr());
+        insert(((ZanrBrojac)item).getZanr());
+    }
 end
 
 rule "nadji najgledaniji anime studio"
+salience 15
 when
     $studioBrojaci: List() from collect(StudioBrojac())
     $maxBrojac: Integer() from accumulate(
@@ -102,7 +113,60 @@ when
         StudioBrojac(brojac == $maxBrojac) from $studioBrojaci
     )
     not(StudioBrojac(brojac > $maxBrojac) from $studioBrojaci)
-    $najgledanijiStudio: StudioBrojac() from $najgledanijiStudiji.get(0)
 then
-    insert($najgledanijiStudio.getStudio());
+//    System.out.println($najgledanijiStudiji);
+    for (Object item : $najgledanijiStudiji) {
+//        System.out.println(((StudioBrojac)item).getStudio());
+        insert(((StudioBrojac)item).getStudio());
+    }
+end
+
+rule "Pokupi po 50 anime po zanru"
+salience 10
+when
+    $zanr: Zanr()
+    $recList: List() // Empty list to hold the results
+
+    accumulate(
+        $anime: Anime(zanrovi contains $zanr), // Filtered by genre
+        $collectedAnime: collectList($anime),
+        $collectedAnime.size() <= 50 // Limit to maximum 50 objects
+    )
+then
+    $recList.addAll($collectedAnime);
+    update($recList);
+end
+
+rule "Pokupi po 50 anime po studiju"
+salience 10
+when
+    $studio: Studio()
+    $recList: List()
+
+    accumulate(
+        $anime: Anime(studiji contains $studio), // Filtered by studio
+        $collectedAnime: collectList($anime),
+        $collectedAnime.size() <= 50 // Limit to maximum 50 objects
+    )
+then
+    $recList.addAll($collectedAnime);
+    update($recList);
+end
+
+rule "Izbaci anime ako je vec na listi korisnika"
+salience 5
+when
+    $korisnik: Korisnik()
+    $recList: List()
+    $anime: Anime() from $recList
+
+    not(Anime(id == $anime.getId()) from $korisnik.getTrenutno_gledanje())
+    not(Anime(id == $anime.getId()) from $korisnik.getIstorija())
+    not(Anime(id == $anime.getId()) from $korisnik.getPlanira_gledanje())
+    not(Anime(id == $anime.getId()) from $korisnik.getOdustao_gledanje())
+    not(Anime(id == $anime.getId()) from $korisnik.getCrna_lista())
+then
+    $recList.remove($anime);
+    System.out.println($recList);
+    update($recList);
 end
