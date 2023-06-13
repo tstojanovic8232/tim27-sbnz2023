@@ -1,6 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <option name="ACTIVE_PROFILES" />
     <option name="ALTERNATIVE_JRE_PATH" value="11" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <module name="service" />
@@ -8,7 +7,6 @@
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="model [clean,install]" run_configuration_type="MavenRunConfiguration" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="kjar [clean,install]" run_configuration_type="MavenRunConfiguration" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="service [clean,install]" run_configuration_type="MavenRunConfiguration" />
       <option name="Make" enabled="true" />
     </method>
   </configuration>

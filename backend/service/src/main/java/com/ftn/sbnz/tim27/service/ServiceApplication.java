@@ -1,6 +1,5 @@
 package com.ftn.sbnz.tim27.service;
 
-import com.ftn.sbnz.tim27.service.controller.KorisnikKontroler;
 import com.ftn.sbnz.tim27.service.servis.JikanAPIService;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieScanner;
@@ -20,10 +19,7 @@ import javax.annotation.PostConstruct;
 import java.util.Arrays;
 
 @SpringBootApplication
-
-
 @EntityScan(basePackages = {"com.ftn.sbnz.tim27.model.*","com.ftn.sbnz.tim27.service.*"})
-
 @ComponentScan(basePackages = {"com.ftn.sbnz.tim27.model.models","com.ftn.sbnz.tim27.service.servis","com.ftn.sbnz.tim27.model.repos","com.ftn.sbnz.tim27.service.controller"})
 @EnableJpaRepositories("com.ftn.sbnz.tim27.model.repos")
 public class ServiceApplication {
@@ -40,7 +36,9 @@ public class ServiceApplication {
 	@PostConstruct
 	public void printMangaData() {
 		jikanAPIService.printGenreData();
-		jikanAPIService.printMangaData();
+		jikanAPIService.printAnimeGenreData();
+//		jikanAPIService.printAnimeData();
+//		jikanAPIService.printMangaData();
 	}
 
 	@Bean

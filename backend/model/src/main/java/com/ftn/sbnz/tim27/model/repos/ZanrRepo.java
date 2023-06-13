@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ZanrRepo extends JpaRepository<Zanr,Long> {
     Zanr findZanrById(Long id);
+    Zanr findZanrByNaziv(String naziv);
 }

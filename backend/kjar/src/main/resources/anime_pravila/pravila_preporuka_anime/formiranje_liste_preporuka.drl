@@ -128,9 +128,9 @@ when
     $recList: List() // Empty list to hold the results
 
     accumulate(
-        $anime: Anime(zanrovi contains $zanr), // Filtered by genre
+        $anime: Anime(zanrovi contains $zanr),
         $collectedAnime: collectList($anime),
-        $collectedAnime.size() <= 50 // Limit to maximum 50 objects
+        $collectedAnime.size() <= 50
     )
 then
     $recList.addAll($collectedAnime);
@@ -144,9 +144,9 @@ when
     $recList: List()
 
     accumulate(
-        $anime: Anime(studiji contains $studio), // Filtered by studio
+        $anime: Anime(studiji contains $studio),
         $collectedAnime: collectList($anime),
-        $collectedAnime.size() <= 50 // Limit to maximum 50 objects
+        $collectedAnime.size() <= 50
     )
 then
     $recList.addAll($collectedAnime);

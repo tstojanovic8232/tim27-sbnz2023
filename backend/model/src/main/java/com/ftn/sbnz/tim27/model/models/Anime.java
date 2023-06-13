@@ -16,11 +16,19 @@ public class Anime {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "anime_studio",
+            joinColumns = @JoinColumn(name = "anime_id"),
+            inverseJoinColumns = @JoinColumn(name = "studio_id")
+    )
     private List<Studio> studiji;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "anime_zanr",
+            joinColumns = @JoinColumn(name = "anime_id"),
+            inverseJoinColumns = @JoinColumn(name = "zanr_id")
+    )
     private List<Zanr> zanrovi;
 
     private String sezona;

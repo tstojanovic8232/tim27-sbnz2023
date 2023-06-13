@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
-@Table(name="zanr")
+@Table(name = "zanr")
 @Data
 @NoArgsConstructor
 public class Zanr {
@@ -16,12 +16,21 @@ public class Zanr {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
+    private Long m_mal_id;
+    private Long a_mal_id;
 
 
 
     public Zanr(Long id, String naziv) {
         this.id = id;
         this.naziv = naziv;
+    }
+
+    public Zanr(Long id, String naziv, Long m_mal_id, Long a_mal_id) {
+        this.id = id;
+        this.naziv = naziv;
+        this.m_mal_id = m_mal_id;
+        this.a_mal_id = a_mal_id;
     }
 
     public Long getId() {
@@ -40,11 +49,29 @@ public class Zanr {
         this.naziv = naziv;
     }
 
+    public Long getM_mal_id() {
+        return m_mal_id;
+    }
+
+    public void setM_mal_id(Long m_mal_id) {
+        this.m_mal_id = m_mal_id;
+    }
+
+    public Long getA_mal_id() {
+        return a_mal_id;
+    }
+
+    public void setA_mal_id(Long a_mal_id) {
+        this.a_mal_id = a_mal_id;
+    }
+
     @Override
     public String toString() {
         return "Zanr{" +
                 "id=" + id +
                 ", naziv='" + naziv + '\'' +
+                ", m_mal_id=" + m_mal_id +
+                ", a_mal_id=" + a_mal_id +
                 '}';
     }
 }
