@@ -1,8 +1,6 @@
 package com.ftn.sbnz.tim27.model.models;
 
 
-
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +14,7 @@ import java.util.List;
 
 @Entity
 @org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
-@Table(name="korisnik")
+@Table(name = "korisnik")
 @Data
 
 public class Korisnik implements Serializable {
@@ -30,44 +28,45 @@ public class Korisnik implements Serializable {
 
     public Korisnik() {
     }
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Anime> trenutno_gledanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Anime> istorija = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Anime> planira_gledanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Anime> odustao_gledanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Anime> crna_lista = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Manga> trenutno_citanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Manga> istorija2 = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Manga> planira_citanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Manga> odustao_citanje = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Manga> crna_lista2 = new ArrayList<>();
 
 

@@ -1,9 +1,11 @@
 package com.ftn.sbnz.tim27.service;
 
 import com.ftn.sbnz.tim27.service.controller.KorisnikKontroler;
+import com.ftn.sbnz.tim27.service.servis.JikanAPIService;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieScanner;
 import org.kie.api.runtime.KieContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,6 +16,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -24,9 +27,20 @@ import java.util.Arrays;
 @ComponentScan(basePackages = {"com.ftn.sbnz.tim27.model.models","com.ftn.sbnz.tim27.service.servis","com.ftn.sbnz.tim27.model.repos","com.ftn.sbnz.tim27.service.controller"})
 @EnableJpaRepositories("com.ftn.sbnz.tim27.model.repos")
 public class ServiceApplication {
+	private final JikanAPIService jikanAPIService;
 
+	@Autowired
+	public ServiceApplication(JikanAPIService jikanAPIService) {
+		this.jikanAPIService = jikanAPIService;
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceApplication.class, args);
+	}
+
+	@PostConstruct
+	public void printMangaData() {
+		jikanAPIService.printGenreData();
+		jikanAPIService.printMangaData();
 	}
 
 	@Bean

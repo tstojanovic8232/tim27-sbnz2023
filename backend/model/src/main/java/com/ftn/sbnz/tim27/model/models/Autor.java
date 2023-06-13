@@ -19,14 +19,11 @@ public class Autor {
     private long id;
 
     private String ime;
-    private String prezime;
 
 
-
-    public Autor(Long id, String ime, String prezime) {
+    public Autor(Long id, String ime) {
         this.id = id;
         this.ime = ime;
-        this.prezime = prezime;
     }
 
     public Long getId() {
@@ -45,20 +42,10 @@ public class Autor {
         this.ime = ime;
     }
 
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
     @Override
     public String toString() {
         return "Autor{" +
                 "id=" + id +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                '}';
+                ", ime='" + ime + '\'' + '}';
     }
 }

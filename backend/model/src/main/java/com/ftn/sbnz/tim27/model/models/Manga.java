@@ -3,6 +3,7 @@ package com.ftn.sbnz.tim27.model.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
 @Table(name="manga")
 @Data
+@Transactional
 public class Manga {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +19,13 @@ public class Manga {
     private Long id;
     private String naziv;
     private String autor;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "korisnik_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+
+    @JoinTable(
+            name = "manga_zanr",
+            joinColumns = @JoinColumn(name = "manga_id"),
+            inverseJoinColumns = @JoinColumn(name = "zanr_id")
+    )
     private List<Zanr> lista_zanrova;
 
 
@@ -61,7 +68,7 @@ public class Manga {
         return (ArrayList<Zanr>) lista_zanrova;
     }
 
-    public void setLista_zanrova(ArrayList<Zanr> lista_zanrova) {
+    public void setLista_zanrova(List<Zanr> lista_zanrova) {
         this.lista_zanrova = lista_zanrova;
     }
 
@@ -74,4 +81,6 @@ public class Manga {
                 ", lista_zanrova=" + lista_zanrova +
                 '}';
     }
+
+
 }
