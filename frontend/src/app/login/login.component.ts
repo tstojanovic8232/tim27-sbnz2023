@@ -12,31 +12,33 @@ import {Korisnik} from "../korisnik";
 })
 export class LoginComponent {
   id: number | undefined;
-  ime: string | undefined;
   prezime: string | undefined;
   uloga: string | undefined;
 
+  korisnik: Korisnik = new Korisnik();
+  username:string='';
+  password:string='';
 
-  korisnik:Korisnik=new Korisnik();
-  //
-  constructor(
-    private loginservice: LoginService,
-    private router: Router,
-
-
-  ) {
+  constructor(private loginservice: LoginService, private router: Router) {
 
   }
-  onSubmit() {
-    this.loginservice.loginUser(this.korisnik).subscribe(data=>{
-      alert("login succesful!");
-      const ime=data.ime;
-      const lozinka=this.korisnik.lozinka;
 
-      if(this.korisnik.ime.match(ime) && this.korisnik.lozinka.match(lozinka)){
-        alert("Ulogovali ste se uspesno!");
-        this.router.navigate(['/user']);
+  onSubmit() {
+     console.log(this.username,this.password)
+    this.loginservice.loginUser(this.username, this.password).subscribe(
+      (data:any) => {
+        console.log(data)
+        alert('Login successful!');
+        const receivedKorisnik: Korisnik = data;
+        const ime = receivedKorisnik.korisniko_ime;
+        const lozinka = receivedKorisnik.lozinka;
+
+
+      },
+      (error) => {
+        console.log(error)
+        alert('Sorry, bad credentials!');
       }
-    },error => alert("sorry bad credentials!"));
+    );
   }
 }

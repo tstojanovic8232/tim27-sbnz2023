@@ -1,8 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" />
     <option name="ALTERNATIVE_JRE_PATH" value="11" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <module name="service (2)" />
+    <module name="service" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.ftn.sbnz.tim27.service.ServiceApplication" />
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="model [clean,install]" run_configuration_type="MavenRunConfiguration" />

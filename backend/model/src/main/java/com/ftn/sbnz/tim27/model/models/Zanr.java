@@ -1,13 +1,23 @@
 package com.ftn.sbnz.tim27.model.models;
 
-public class Zanr {
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@Entity
+@org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
+@Table(name="zanr")
+@Data
+@NoArgsConstructor
+public class Zanr {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
 
-    public Zanr(){
 
-    }
 
     public Zanr(Long id, String naziv) {
         this.id = id;

@@ -1,5 +1,11 @@
 package com.ftn.sbnz.tim27.model.models;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
 public class Feedback {
     private Boolean pozitivan;
     private Boolean zaZanr;

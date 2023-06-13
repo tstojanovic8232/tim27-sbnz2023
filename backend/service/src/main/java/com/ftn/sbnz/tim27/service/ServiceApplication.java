@@ -1,12 +1,15 @@
 package com.ftn.sbnz.tim27.service;
 
+import com.ftn.sbnz.tim27.service.controller.KorisnikKontroler;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieScanner;
 import org.kie.api.runtime.KieContainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -14,7 +17,12 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ComponentScan({"com.ftn.sbnz.tim27.model.repos"})
+
+
+@EntityScan(basePackages = {"com.ftn.sbnz.tim27.model.*","com.ftn.sbnz.tim27.service.*"})
+
+@ComponentScan(basePackages = {"com.ftn.sbnz.tim27.model.models","com.ftn.sbnz.tim27.service.servis","com.ftn.sbnz.tim27.model.repos","com.ftn.sbnz.tim27.service.controller"})
+@EnableJpaRepositories("com.ftn.sbnz.tim27.model.repos")
 public class ServiceApplication {
 
 	public static void main(String[] args) {

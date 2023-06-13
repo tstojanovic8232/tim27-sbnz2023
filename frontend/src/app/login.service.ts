@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Korisnik} from "./korisnik";
 import {Observable} from "rxjs";
 
@@ -8,12 +8,13 @@ import {Observable} from "rxjs";
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:8084';
+  private apiUrl = 'http://localhost:8084/korisnik';
 
   constructor(private http: HttpClient) {}
 
-  public loginUser(korisnik: Korisnik): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, korisnik);
+  public loginUser(username:string,password:string): Observable<any> {
+   let data ={korisniko_ime:username,lozinka:password}
+    return this.http.post(`${this.apiUrl}/login`, data);
   }
 
   public getUsers(): Observable<Korisnik[]> {

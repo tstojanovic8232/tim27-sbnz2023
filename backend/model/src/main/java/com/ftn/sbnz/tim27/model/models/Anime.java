@@ -1,18 +1,33 @@
 package com.ftn.sbnz.tim27.model.models;
 
-import java.util.List;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.List;
+@Entity
+@org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
+@Table(name="anime")
+@Data
+@NoArgsConstructor
 public class Anime {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "korisnik_id")
     private List<Studio> studiji;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "korisnik_id")
     private List<Zanr> zanrovi;
+
     private String sezona;
     private String godina;
     private String izvor;
 
-    public Anime() {
-    }
+
 
     public Anime(Long id, String naziv, List<Studio> studiji, List<Zanr> zanrovi, String sezona, String godina, String izvor) {
         this.id = id;

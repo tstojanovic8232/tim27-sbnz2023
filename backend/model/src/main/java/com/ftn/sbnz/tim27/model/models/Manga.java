@@ -1,12 +1,25 @@
 package com.ftn.sbnz.tim27.model.models;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
+@Table(name="manga")
+@Data
 public class Manga {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
     private String autor;
-    private ArrayList<Zanr> lista_zanrova;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "korisnik_id")
+    private List<Zanr> lista_zanrova;
 
 
     public Manga(){
@@ -45,7 +58,7 @@ public class Manga {
     }
 
     public ArrayList<Zanr> getLista_zanrova() {
-        return lista_zanrova;
+        return (ArrayList<Zanr>) lista_zanrova;
     }
 
     public void setLista_zanrova(ArrayList<Zanr> lista_zanrova) {

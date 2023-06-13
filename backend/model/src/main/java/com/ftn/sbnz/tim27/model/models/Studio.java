@@ -1,11 +1,23 @@
 package com.ftn.sbnz.tim27.model.models;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Entity
+@org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
+@Table(name="studio")
+@Data
+@NoArgsConstructor
 public class Studio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
 
-    public Studio() {
-    }
+
 
     public Studio(Long id, String naziv) {
         this.id = id;

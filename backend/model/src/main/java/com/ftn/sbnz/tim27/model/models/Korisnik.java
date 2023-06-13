@@ -3,14 +3,22 @@ package com.ftn.sbnz.tim27.model.models;
 
 
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
+@org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.FIELD)
+@Table(name="korisnik")
+@Data
+
 public class Korisnik implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,21 +27,49 @@ public class Korisnik implements Serializable {
     private String email;
     private String korisniko_ime;
     private String lozinka;
-    private ArrayList<Anime> trenutno_gledanje;
-    private ArrayList<Anime> istorija;
-    private ArrayList<Anime> planira_gledanje;
-    private ArrayList<Anime> odustao_gledanje;
-    private ArrayList<Anime> crna_lista;
-
-    private ArrayList<Manga> trenutno_citanje;
-    private ArrayList<Manga> istorija2;
-    private ArrayList<Manga> planira_citanje;
-    private ArrayList<Manga> odustao_citanje;
-    private ArrayList<Manga> crna_lista2;
 
     public Korisnik() {
-
     }
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Anime> trenutno_gledanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Anime> istorija = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Anime> planira_gledanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Anime> odustao_gledanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Anime> crna_lista = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Manga> trenutno_citanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Manga> istorija2 = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Manga> planira_citanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Manga> odustao_citanje = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "korisnik_id")
+    private List<Manga> crna_lista2 = new ArrayList<>();
+
 
     public Korisnik(Long id, String email, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista, ArrayList<Manga> trenutno_citanje, ArrayList<Manga> istorija2, ArrayList<Manga> planira_citanje, ArrayList<Manga> odustao_citanje, ArrayList<Manga> crna_lista2) {
         this.id = id;
@@ -85,7 +121,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Anime> getTrenutno_gledanje() {
-        return trenutno_gledanje;
+        return (ArrayList<Anime>) trenutno_gledanje;
     }
 
     public void setTrenutno_gledanje(ArrayList<Anime> trenutno_gledanje) {
@@ -93,7 +129,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Anime> getIstorija() {
-        return istorija;
+        return (ArrayList<Anime>) istorija;
     }
 
     public void setIstorija(ArrayList<Anime> istorija) {
@@ -101,7 +137,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Anime> getPlanira_gledanje() {
-        return planira_gledanje;
+        return (ArrayList<Anime>) planira_gledanje;
     }
 
     public void setPlanira_gledanje(ArrayList<Anime> planira_gledanje) {
@@ -109,7 +145,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Anime> getOdustao_gledanje() {
-        return odustao_gledanje;
+        return (ArrayList<Anime>) odustao_gledanje;
     }
 
     public void setOdustao_gledanje(ArrayList<Anime> odustao_gledanje) {
@@ -117,7 +153,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Anime> getCrna_lista() {
-        return crna_lista;
+        return (ArrayList<Anime>) crna_lista;
     }
 
     public void setCrna_lista(ArrayList<Anime> crna_lista) {
@@ -125,7 +161,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Manga> getTrenutno_citanje() {
-        return trenutno_citanje;
+        return (ArrayList<Manga>) trenutno_citanje;
     }
 
     public void setTrenutno_citanje(ArrayList<Manga> trenutno_citanje) {
@@ -133,7 +169,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Manga> getIstorija2() {
-        return istorija2;
+        return (ArrayList<Manga>) istorija2;
     }
 
     public void setIstorija2(ArrayList<Manga> istorija2) {
@@ -141,7 +177,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Manga> getPlanira_citanje() {
-        return planira_citanje;
+        return (ArrayList<Manga>) planira_citanje;
     }
 
     public void setPlanira_citanje(ArrayList<Manga> planira_citanje) {
@@ -149,7 +185,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Manga> getOdustao_citanje() {
-        return odustao_citanje;
+        return (ArrayList<Manga>) odustao_citanje;
     }
 
     public void setOdustao_citanje(ArrayList<Manga> odustao_citanje) {
@@ -157,7 +193,7 @@ public class Korisnik implements Serializable {
     }
 
     public ArrayList<Manga> getCrna_lista2() {
-        return crna_lista2;
+        return (ArrayList<Manga>) crna_lista2;
     }
 
     public void setCrna_lista2(ArrayList<Manga> crna_lista2) {
