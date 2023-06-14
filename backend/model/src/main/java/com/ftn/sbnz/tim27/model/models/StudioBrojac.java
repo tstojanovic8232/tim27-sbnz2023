@@ -23,6 +23,10 @@ public class StudioBrojac {
     public void povecajBrojac() {
         brojac++;
     }
+    public void smanjiBrojac() {
+        if(brojac > 0) brojac--;
+        else brojac=0;
+    }
 
     @Override
     public String toString() {
