@@ -154,7 +154,7 @@ public class JikanAPIService {
                             Long studioId = studioNode.get("mal_id").asLong();
                             String studioName = studioNode.get("name").asText();
                             Studio studio = new Studio(studioId, studioName);
-                            if (!studioRepo.existsById(studioId)) studioRepo.save(studio);
+                            if (!studioRepo.existsById(studioId)) studioRepo.saveAndFlush(studio);
                             studios.add(studio);
                         }
                         Anime animeObj = new Anime();
