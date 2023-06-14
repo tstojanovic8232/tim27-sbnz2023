@@ -46,47 +46,47 @@ public class JikanAPIService {
         String apiUrl = "https://api.jikan.moe/v4/manga";
 
         try {
-            HttpGet request = new HttpGet(apiUrl);
-            HttpResponse response = httpClient.execute(request);
+            for (int i = 1; i < 31; i++) {
+                HttpGet request = new HttpGet(apiUrl + "?page=" + i);
+                HttpResponse response = httpClient.execute(request);
 
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                String responseBody = EntityUtils.toString(response.getEntity());
+                if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    String responseBody = EntityUtils.toString(response.getEntity());
 
-                // Parse the JSON response to get the data you need
-                // Adjust the parsing logic based on the API response structure
-                JsonNode jsonNode = objectMapper.readTree(responseBody);
-                JsonNode mangaNode = jsonNode.get("data");
-                for (JsonNode manga : mangaNode) {
-                    String title = manga.get("title").asText();
-                    String synopsis = manga.get("synopsis").asText();
-                    List<Zanr> genres = new ArrayList<>();
-                    Long id = manga.get("mal_id").asLong();
-                    JsonNode genresNode = manga.get("genres");
+                    // Parse the JSON response to get the data you need
+                    // Adjust the parsing logic based on the API response structure
+                    JsonNode jsonNode = objectMapper.readTree(responseBody);
+                    JsonNode mangaNode = jsonNode.get("data");
+                    for (JsonNode manga : mangaNode) {
+                        String title = manga.get("title").asText();
+                        String synopsis = manga.get("synopsis").asText();
+                        List<Zanr> genres = new ArrayList<>();
+                        Long id = manga.get("mal_id").asLong();
+                        JsonNode genresNode = manga.get("genres");
 
-                    for (JsonNode genre : genresNode) {
-                        String zanrNaziv = genre.get("name").asText();
-                        genres.add(zanrRepo.findZanrByNaziv(zanrNaziv));
+                        for (JsonNode genre : genresNode) {
+                            String zanrNaziv = genre.get("name").asText();
+                            genres.add(zanrRepo.findZanrByNaziv(zanrNaziv));
+                        }
+                        List<String> authors = new ArrayList<>();
+                        JsonNode authorsNode = manga.get("authors");
+                        for (JsonNode genre : authorsNode) {
+                            String genreName = genre.get("name").asText();
+                            authors.add(genreName);
+                        }
+                        Manga m = new Manga();
+                        m.setId(id);
+                        m.setNaziv(title);
+                        m.setLista_zanrova(genres);
+                        m.setAutor(authors.get(0));
+                        mangaRepo.save(m);
                     }
-                    List<String> authors = new ArrayList<>();
-                    JsonNode authorsNode = manga.get("authors");
-                    for (JsonNode genre : authorsNode) {
-                        String genreName = genre.get("name").asText();
-                        authors.add(genreName);
-                    }
-                    Manga m = new Manga();
-                    m.setId(id);
-                    m.setNaziv(title);
-                    m.setLista_zanrova(genres);
-                    m.setAutor(authors.get(0));
-                    mangaRepo.save(m);
-                    System.out.println("Title: " + title);
-                    System.out.println("Synopsis: " + synopsis);
-                    System.out.println("Genres: " + genres);
-                    System.out.println("Authors: " + authors);
-                    System.out.println("----------------------------------");
                 }
+                Thread.sleep(1000);
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -125,9 +125,9 @@ public class JikanAPIService {
         String apiUrl = "https://api.jikan.moe/v4/anime?sfw";
 
         try {
-            for (int i = 1; i < 927; i++) {
+            for (int i = 1; i < 31; i++) {
 
-                HttpGet request = new HttpGet(apiUrl + "&page=" + String.valueOf(i));
+                HttpGet request = new HttpGet(apiUrl + "&page=" + i);
                 HttpResponse response = httpClient.execute(request);
 
                 if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -154,7 +154,7 @@ public class JikanAPIService {
                             Long studioId = studioNode.get("mal_id").asLong();
                             String studioName = studioNode.get("name").asText();
                             Studio studio = new Studio(studioId, studioName);
-                            if (!studioRepo.existsById(studioId)) studioRepo.saveAndFlush(studio);
+                            if (!studioRepo.existsById(studioId)) studioRepo.save(studio);
                             studios.add(studio);
                         }
                         Anime animeObj = new Anime();
@@ -165,8 +165,11 @@ public class JikanAPIService {
                         animeRepo.save(animeObj);
                     }
                 }
+                Thread.sleep(1000);
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -191,7 +194,7 @@ public class JikanAPIService {
 
 
                     Zanr zanr = zanrRepo.findZanrByNaziv(title);
-                    if (zanr.getId()==null)
+                    if (zanr.getId() == null)
                         zanr.setNaziv(title);
                     zanr.setA_mal_id(id);
                     zanrRepo.save(zanr);

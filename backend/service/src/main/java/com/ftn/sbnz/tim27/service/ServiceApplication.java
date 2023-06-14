@@ -37,8 +37,8 @@ public class ServiceApplication {
 	public void printMangaData() {
 		jikanAPIService.printGenreData();
 		jikanAPIService.printAnimeGenreData();
-		jikanAPIService.printAnimeData();
 		jikanAPIService.printMangaData();
+		jikanAPIService.printAnimeData();
 	}
 
 	@Bean
