@@ -1,22 +1,26 @@
 <div class="container">
   <div class="list">
     <ul>
-      <li *ngFor="let anime of animeData" >
+      <li *ngFor="let anime of animeData">
         {{anime.id}}-{{anime.naziv}}
       </li>
 
     </ul>
-    <button type="button" (click)="addAnime()">Dodaj na listu</button>
-
+    <div>
+      <button type="button" (click)="addAnime()">Dodaj na listu</button>
+      <button type="button" (click)="addAnimeRandom()">Dodaj nasumično na listu</button>
+    </div>
   </div>
   <div class="list">
     <ul>
-      <li *ngFor="let manga of mangaData" >
+      <li *ngFor="let manga of mangaData">
         {{manga.id}}-{{manga.naziv}}
       </li>
     </ul>
-    <button type="button" (click)="addManga()" >Dodaj na listu</button>
-
+    <div>
+      <button type="button" (click)="addManga()">Dodaj na listu</button>
+      <button type="button" (click)="addMangaRandom()">Dodaj nasumično na listu</button>
+    </div>
   </div>
 
 </div>

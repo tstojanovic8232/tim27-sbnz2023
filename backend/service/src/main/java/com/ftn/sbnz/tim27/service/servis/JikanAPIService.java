@@ -47,7 +47,7 @@ public class JikanAPIService {
         String apiUrl = "https://api.jikan.moe/v4/manga";
 
         try {
-            for (int i = 1; i < 6; i++) {
+            for (int i = 1; i < 11; i++) {
                 HttpGet request = new HttpGet(apiUrl + "?page=" + i);
                 HttpResponse response = httpClient.execute(request);
 
@@ -127,7 +127,7 @@ public class JikanAPIService {
 
         try {
 
-            for (int i = 1; i < 6; i++) {
+            for (int i = 1; i < 11; i++) {
 
 
                 HttpGet request = new HttpGet(apiUrl + "&page=" + i);
@@ -220,7 +220,7 @@ public class JikanAPIService {
 
                 Random random = new Random();
                 List<Anime> list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j <5; j++) {
                     Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
                     list.add(randomAnime);
 
@@ -228,28 +228,28 @@ public class JikanAPIService {
                 korisnik.setTrenutno_gledanje(list);
 
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 15; j++) {
                     Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
                     list.add(randomAnime);
 
                 }
                 korisnik.setIstorija(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 10; j++) {
                     Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
                     list.add(randomAnime);
 
                 }
                 korisnik.setPlanira_gledanje(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 3; j++) {
                     Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
                     list.add(randomAnime);
 
                 }
                 korisnik.setOdustao_gledanje(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 3; j++) {
                     Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
                     list.add(randomAnime);
 
@@ -269,28 +269,28 @@ public class JikanAPIService {
                 korisnik.setTrenutno_citanje(list);
 
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 15; j++) {
                     Manga randomManga = allManga.get(random.nextInt(allManga.size()));
                     list.add(randomManga);
 
                 }
                 korisnik.setIstorija2(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 10; j++) {
                     Manga randomManga = allManga.get(random.nextInt(allManga.size()));
                     list.add(randomManga);
 
                 }
                 korisnik.setPlanira_citanje(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 3; j++) {
                     Manga randomManga = allManga.get(random.nextInt(allManga.size()));
                     list.add(randomManga);
 
                 }
                 korisnik.setOdustao_citanje(list);
                 list = new ArrayList<>();
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 3; j++) {
                     Manga randomManga = allManga.get(random.nextInt(allManga.size()));
                     list.add(randomManga);
 

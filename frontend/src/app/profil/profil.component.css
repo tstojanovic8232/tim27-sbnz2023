@@ -1,20 +1,24 @@
-.container{
+.container {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
   height: 100%;
-
+  padding: 10px;
 }
-.list{
+
+.list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
-ul{
+
+ul {
   overflow-x: hidden;
   overflow-y: scroll;
   text-decoration: none;
   list-style: none;
+  height: 80%;
+  width: 400px;
 }
