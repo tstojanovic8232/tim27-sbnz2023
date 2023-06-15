@@ -125,7 +125,10 @@ public class JikanAPIService {
         String apiUrl = "https://api.jikan.moe/v4/anime?sfw";
 
         try {
+
             for (int i = 1; i < 31; i++) {
+
+
 
                 HttpGet request = new HttpGet(apiUrl + "&page=" + i);
                 HttpResponse response = httpClient.execute(request);

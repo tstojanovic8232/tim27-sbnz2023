@@ -43,7 +43,7 @@ export class BrowseMangaComponent {
     }
   }
   getMostPopularMangas() {
-    this.mangaService.getMostPopularMangas().subscribe(
+    this.mangaService.getMangas().subscribe(
       (response) => {
         this.mangas = response.data;
         this.filteredMangas = this.mangas;

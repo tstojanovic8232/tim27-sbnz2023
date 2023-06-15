@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {map, Observable, ReplaySubject, shareReplay, tap} from "rxjs";
+import {concat, forkJoin, map, mergeMap, Observable, reduce, ReplaySubject, shareReplay, tap, timer} from "rxjs";
+import {MangaComponent} from "./manga/manga.component";
 
 export interface Manga {
   mal_id: number;
@@ -230,16 +231,52 @@ export class MangaService {
   mecha:string="https://api.jikan.moe/v4/manga?genres=18";
   military:string="https://api.jikan.moe/v4/manga?genres=38";
   psychological:string="https://api.jikan.moe/v4/manga?genres=40";
+  requestInterval = 4000;
+  mangaData: any[] = [];
+  private ListResponesModel: Manga | undefined;
+
   constructor(private httpclient:HttpClient) { }
 
 
-  getMangas(): Observable<ListResponseModel<Manga>> {
-    // const params = new HttpParams()
-    //   .set('genres', '30') // Set the 'genres' parameter to '30' for sports manga
-    //   .set('order_by', 'asc'); // Set the 'order_by' parameter to 'asc' for ascending order
 
-    return this.httpclient.get<ListResponseModel<Manga>>(this.mostpopular);
+  getMangaData(): Observable<ListResponseModel<Manga>> {
+    const totalPages = 3;
+    const mangaPerPage = 25;
+
+    for (let i = 1; i <= Math.ceil(totalPages / mangaPerPage); i++) {
+      const requestUrl = `${this.apiUrl}?page=${i}&limit=${mangaPerPage}`;
+
+      timer((i - 1) * this.requestInterval).pipe(
+        mergeMap(() => this.httpclient.get<ListResponseModel<Manga>>(requestUrl))
+      ).subscribe((response: any) => {
+        if (response && response.results && Array.isArray(response.results)) {
+          this.mangaData.push(...response.results); // Store the manga data
+        }
+      });
+    }
+    return this.httpclient.get<ListResponseModel<Manga>>(this.apiUrl);
   }
+
+  getMangas(): Observable<ListResponseModel<Manga>> {
+    const totalPages = 60;
+    const mangaPerPage = 25;
+
+    const requests: Observable<ListResponseModel<Manga>>[] = [];
+
+    for (let i = 1; i <= Math.ceil(totalPages / mangaPerPage); i++) {
+      const requestUrl = `${this.mostpopular}?page=${i}&limit=${mangaPerPage}`;
+      requests.push(this.httpclient.get<ListResponseModel<Manga>>(requestUrl));
+    }
+
+    return concat(...requests).pipe(
+      reduce((mergedResponse: ListResponseModel<Manga>, response: ListResponseModel<Manga>) => {
+        mergedResponse.data.push(...response.data);
+        return mergedResponse;
+      }, { data: [] as Manga[] })
+    );
+  }
+
+
   getActionMangas(): Observable<ListResponseModel<Manga>> {
     // const params = new HttpParams()
     //   .set('genres', '30') // Set the 'genres' parameter to '30' for sports manga

@@ -174,5 +174,65 @@ public class MangaTests {
 
         kieSession.dispose();
     }
+    @Test
+    public void testCollectMangaPerGenre() {
+        // Create KieServices and KieContainer
+        KieServices kieServices = KieServices.Factory.get();
+        KieContainer kieContainer = kieServices.getKieClasspathContainer();
+        KieBase kieBase = kieContainer.getKieBase("mangaPreporukaKieBase");
+
+        KieSession kieSession = kieBase.newKieSession();
+
+        try {
+            // Prepare test data
+            List<Manga> allManga = new ArrayList<>();
+            List<Manga> collectedManga = new ArrayList<>();
+            Zanr zanr = new Zanr();
+            zanr.setId(1L); // Set the desired genre ID
+
+            // Populate the allManga list with example manga
+            Manga manga1 = new Manga();
+            manga1.setId(1L);
+            manga1.setNaziv("Manga 1");
+            manga1.setLista_zanrova(new ArrayList<>());
+            manga1.getLista_zanrova().add(zanr);
+            allManga.add(manga1);
+
+            Manga manga2 = new Manga();
+            manga2.setId(2L);
+            manga2.setNaziv("Manga 2");
+            manga2.setLista_zanrova(new ArrayList<>());
+            manga2.getLista_zanrova().add(zanr);
+            allManga.add(manga2);
+
+            // Populate the collectedManga list with example already collected manga
+            Manga collectedManga1 = new Manga();
+            collectedManga1.setId(3L);
+            collectedManga1.setNaziv("Collected Manga 1");
+            collectedManga1.setLista_zanrova(new ArrayList<>());
+            collectedManga1.getLista_zanrova().add(zanr);
+            collectedManga.add(collectedManga1);
+
+            // Insert objects into the KieSession
+            kieSession.insert(zanr);
+            kieSession.insert(allManga);
+            kieSession.insert(collectedManga);
+
+            // Fire the rules
+            kieSession.fireAllRules();
+
+            // Retrieve the updated lists
+            List<Manga> updatedCollectedManga = (List<Manga>) kieSession.getObjects(o -> o instanceof Manga);
+
+            // Print the updated lists
+            System.out.println("Collected Manga:");
+            for (Manga manga : updatedCollectedManga) {
+                System.out.println(manga);
+            }
+        } finally {
+            // Dispose the KieSession
+            kieSession.dispose();
+        }
+    }
 
 }
