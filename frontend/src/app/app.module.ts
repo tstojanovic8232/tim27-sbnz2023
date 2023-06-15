@@ -16,6 +16,7 @@ import { NavbarmangaComponent } from './navbarmanga/navbarmanga.component';
 import { BrowseMangaComponent } from './browse-manga/browse-manga.component';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
+import { ProfilComponent } from './profil/profil.component';
 
 
 
@@ -33,7 +34,8 @@ import {LoginComponent} from "./login/login.component";
     MangaDetailsComponent,
     NavbarmangaComponent,
     BrowseMangaComponent,
-    LoginComponent
+    LoginComponent,
+    ProfilComponent
 
   ],
     imports: [

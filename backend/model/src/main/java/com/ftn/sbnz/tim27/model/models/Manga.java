@@ -14,7 +14,6 @@ import java.util.List;
 @Transactional
 public class Manga {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;
@@ -33,7 +32,7 @@ public class Manga {
 
     }
 
-    public Manga(Long id, String naziv, String autor, ArrayList<Zanr> lista_zanrova) {
+    public Manga(Long id, String naziv, String autor, List<Zanr> lista_zanrova) {
         this.id = id;
         this.naziv = naziv;
         this.autor = autor;
@@ -64,8 +63,8 @@ public class Manga {
         this.autor = autor;
     }
 
-    public ArrayList<Zanr> getLista_zanrova() {
-        return (ArrayList<Zanr>) lista_zanrova;
+    public List<Zanr> getLista_zanrova() {
+        return  lista_zanrova;
     }
 
     public void setLista_zanrova(List<Zanr> lista_zanrova) {

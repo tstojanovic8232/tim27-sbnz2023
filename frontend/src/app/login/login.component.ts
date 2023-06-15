@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {LoginService} from "../login.service";
 import {Router} from "@angular/router";
 import {Korisnik} from "../korisnik";
+import {LocalService} from "../local.service";
 
 
 
@@ -19,7 +20,7 @@ export class LoginComponent {
   username:string='';
   password:string='';
 
-  constructor(private loginservice: LoginService, private router: Router) {
+  constructor(private loginservice: LoginService, private router: Router,private localservice:LocalService) {
 
   }
 
@@ -28,11 +29,13 @@ export class LoginComponent {
     this.loginservice.loginUser(this.username, this.password).subscribe(
       (data:any) => {
         console.log(data)
-        alert('Login successful!');
+
+        this.localservice.saveData('id',data.id.toString())
         const receivedKorisnik: Korisnik = data;
         const ime = receivedKorisnik.korisniko_ime;
         const lozinka = receivedKorisnik.lozinka;
 
+        this.router.navigate(['/profil']);
 
       },
       (error) => {
@@ -40,5 +43,6 @@ export class LoginComponent {
         alert('Sorry, bad credentials!');
       }
     );
+
   }
 }

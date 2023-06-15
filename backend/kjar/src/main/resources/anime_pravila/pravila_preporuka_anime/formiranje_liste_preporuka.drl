@@ -99,7 +99,7 @@ when
 then
 //    System.out.println($najgledanijiZanrovi);
     for (Object item : $najgledanijiZanrovi) {
-        System.out.println(((ZanrBrojac)item).getZanr());
+//        System.out.println(((ZanrBrojac)item).getZanr());
         insert(((ZanrBrojac)item).getZanr());
     }
 end
@@ -119,7 +119,7 @@ when
 then
 //    System.out.println($najgledanijiStudiji);
     for (Object item : $najgledanijiStudiji) {
-        System.out.println(((StudioBrojac)item).getStudio());
+//        System.out.println(((StudioBrojac)item).getStudio());
         insert(((StudioBrojac)item).getStudio());
     }
 end

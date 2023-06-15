@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 100%;
+
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+ul{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-decoration: none;
+  list-style: none;
+}

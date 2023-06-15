@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Anime {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String naziv;

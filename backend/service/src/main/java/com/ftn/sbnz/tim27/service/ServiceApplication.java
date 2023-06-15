@@ -35,14 +35,16 @@ public class ServiceApplication {
 
 	@PostConstruct
 	public void printMangaData() {
+        jikanAPIService.insertUsers();
 		jikanAPIService.printGenreData();
 		jikanAPIService.printAnimeGenreData();
 		jikanAPIService.printMangaData();
 		jikanAPIService.printAnimeData();
-
+        jikanAPIService.addMediaToKorisnikLists();
 
 
 	}
+
 
 	@Bean
 	public KieContainer kieContainer() {

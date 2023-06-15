@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 
@@ -31,46 +31,46 @@ public class Korisnik implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Anime> trenutno_gledanje = new ArrayList<>();
+    private List<Anime> trenutno_gledanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Anime> istorija = new ArrayList<>();
+    private List<Anime> istorija;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Anime> planira_gledanje = new ArrayList<>();
+    private List<Anime> planira_gledanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Anime> odustao_gledanje = new ArrayList<>();
+    private List<Anime> odustao_gledanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Anime> crna_lista = new ArrayList<>();
+    private List<Anime> crna_lista;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Manga> trenutno_citanje = new ArrayList<>();
+    private List<Manga> trenutno_citanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Manga> istorija2 = new ArrayList<>();
+    private List<Manga> istorija2;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Manga> planira_citanje = new ArrayList<>();
+    private List<Manga> planira_citanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Manga> odustao_citanje = new ArrayList<>();
+    private List<Manga> odustao_citanje;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
-    private List<Manga> crna_lista2 = new ArrayList<>();
+    private List<Manga> crna_lista2;
 
 
-    public Korisnik(Long id, String email, String korisniko_ime, String lozinka, ArrayList<Anime> trenutno_gledanje, ArrayList<Anime> istorija, ArrayList<Anime> planira_gledanje, ArrayList<Anime> odustao_gledanje, ArrayList<Anime> crna_lista, ArrayList<Manga> trenutno_citanje, ArrayList<Manga> istorija2, ArrayList<Manga> planira_citanje, ArrayList<Manga> odustao_citanje, ArrayList<Manga> crna_lista2) {
+    public Korisnik(Long id, String email, String korisniko_ime, String lozinka, List<Anime> trenutno_gledanje, List<Anime> istorija, List<Anime> planira_gledanje, List<Anime> odustao_gledanje, List<Anime> crna_lista, List<Manga> trenutno_citanje, List<Manga> istorija2, List<Manga> planira_citanje, List<Manga> odustao_citanje, List<Manga> crna_lista2) {
         this.id = id;
         this.email = email;
         this.korisniko_ime = korisniko_ime;
@@ -119,83 +119,83 @@ public class Korisnik implements Serializable {
         this.lozinka = lozinka;
     }
 
-    public ArrayList<Anime> getTrenutno_gledanje() {
-        return (ArrayList<Anime>) trenutno_gledanje;
+    public List<Anime> getTrenutno_gledanje() {
+        return trenutno_gledanje;
     }
 
-    public void setTrenutno_gledanje(ArrayList<Anime> trenutno_gledanje) {
+    public void setTrenutno_gledanje(List<Anime> trenutno_gledanje) {
         this.trenutno_gledanje = trenutno_gledanje;
     }
 
-    public ArrayList<Anime> getIstorija() {
-        return (ArrayList<Anime>) istorija;
+    public List<Anime> getIstorija() {
+        return istorija;
     }
 
-    public void setIstorija(ArrayList<Anime> istorija) {
+    public void setIstorija(List<Anime> istorija) {
         this.istorija = istorija;
     }
 
-    public ArrayList<Anime> getPlanira_gledanje() {
-        return (ArrayList<Anime>) planira_gledanje;
+    public List<Anime> getPlanira_gledanje() {
+        return planira_gledanje;
     }
 
-    public void setPlanira_gledanje(ArrayList<Anime> planira_gledanje) {
+    public void setPlanira_gledanje(List<Anime> planira_gledanje) {
         this.planira_gledanje = planira_gledanje;
     }
 
-    public ArrayList<Anime> getOdustao_gledanje() {
-        return (ArrayList<Anime>) odustao_gledanje;
+    public List<Anime> getOdustao_gledanje() {
+        return odustao_gledanje;
     }
 
-    public void setOdustao_gledanje(ArrayList<Anime> odustao_gledanje) {
+    public void setOdustao_gledanje(List<Anime> odustao_gledanje) {
         this.odustao_gledanje = odustao_gledanje;
     }
 
-    public ArrayList<Anime> getCrna_lista() {
-        return (ArrayList<Anime>) crna_lista;
+    public List<Anime> getCrna_lista() {
+        return crna_lista;
     }
 
-    public void setCrna_lista(ArrayList<Anime> crna_lista) {
+    public void setCrna_lista(List<Anime> crna_lista) {
         this.crna_lista = crna_lista;
     }
 
-    public ArrayList<Manga> getTrenutno_citanje() {
-        return (ArrayList<Manga>) trenutno_citanje;
+    public List<Manga> getTrenutno_citanje() {
+        return (List<Manga>) trenutno_citanje;
     }
 
-    public void setTrenutno_citanje(ArrayList<Manga> trenutno_citanje) {
+    public void setTrenutno_citanje(List<Manga> trenutno_citanje) {
         this.trenutno_citanje = trenutno_citanje;
     }
 
-    public ArrayList<Manga> getIstorija2() {
-        return (ArrayList<Manga>) istorija2;
+    public List<Manga> getIstorija2() {
+        return (List<Manga>) istorija2;
     }
 
-    public void setIstorija2(ArrayList<Manga> istorija2) {
+    public void setIstorija2(List<Manga> istorija2) {
         this.istorija2 = istorija2;
     }
 
-    public ArrayList<Manga> getPlanira_citanje() {
-        return (ArrayList<Manga>) planira_citanje;
+    public List<Manga> getPlanira_citanje() {
+        return (List<Manga>) planira_citanje;
     }
 
-    public void setPlanira_citanje(ArrayList<Manga> planira_citanje) {
+    public void setPlanira_citanje(List<Manga> planira_citanje) {
         this.planira_citanje = planira_citanje;
     }
 
-    public ArrayList<Manga> getOdustao_citanje() {
-        return (ArrayList<Manga>) odustao_citanje;
+    public List<Manga> getOdustao_citanje() {
+        return (List<Manga>) odustao_citanje;
     }
 
-    public void setOdustao_citanje(ArrayList<Manga> odustao_citanje) {
+    public void setOdustao_citanje(List<Manga> odustao_citanje) {
         this.odustao_citanje = odustao_citanje;
     }
 
-    public ArrayList<Manga> getCrna_lista2() {
-        return (ArrayList<Manga>) crna_lista2;
+    public List<Manga> getCrna_lista2() {
+        return (List<Manga>) crna_lista2;
     }
 
-    public void setCrna_lista2(ArrayList<Manga> crna_lista2) {
+    public void setCrna_lista2(List<Manga> crna_lista2) {
         this.crna_lista2 = crna_lista2;
     }
 

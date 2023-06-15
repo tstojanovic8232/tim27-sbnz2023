@@ -13,6 +13,7 @@ import {MangaDetailsComponent} from "./manga-details/manga-details.component";
 import {BrowseMangaComponent} from "./browse-manga/browse-manga.component";
 import {SignupComponent} from "./signup/signup.component";
 import {LoginComponent} from "./login/login.component";
+import {ProfilComponent} from "./profil/profil.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,9 @@ const routes: Routes = [
   ,{ path: 'manga/:id', component: MangaDetailsComponent},
   {
     path: 'signup', component: SignupComponent
+  },
+  {
+    path: 'profil', component: ProfilComponent
   },
   {
     path: 'anime', component: BasicAnimePagesComponent, children:

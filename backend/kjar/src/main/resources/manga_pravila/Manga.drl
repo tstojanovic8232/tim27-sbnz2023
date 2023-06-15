@@ -1,5 +1,7 @@
 import com.ftn.sbnz.tim27.model.models.*;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 rule "prebroji manga zanrove iz trenutne liste korisnika"
 when
@@ -57,29 +59,58 @@ when
         ZanrBrojac(brojac == $maxBrojac) from $zanrBrojaci
     )
     not(ZanrBrojac(brojac > $maxBrojac) from $zanrBrojaci)
-    $najgledanijiZanr: ZanrBrojac() from $najgledanijiZanrovi.get(0)
-then
 
-    insert($najgledanijiZanr.getZanr());
+then
+//    System.out.println($najgledanijiZanrovi);
+    for (Object item : $najgledanijiZanrovi) {
+//        System.out.println(((ZanrBrojac)item).getZanr());
+        insert(((ZanrBrojac)item).getZanr());
+    }
 end
 
-rule "Collect up to 50 Manga per Genre"
+
+rule "Pokupi mangu po zanru"
+salience 10
 when
     $zanr: Zanr()
-    $allManga: List()
-    $collectedManga: List(size < 300)
-
-    $additionalManga: List() from collect(Manga(this memberOf $allManga, lista_zanrova contains $zanr, not($collectedManga contains this)))
-
-    eval($additionalManga.size() > 0)
-
-    $numToAdd: Integer() from eval(Math.min($additionalManga.size(), 50))
-    $numToLimit: Integer() from eval(Math.min($numToAdd, 300 - $collectedManga.size()))
-
-    $additionalMangaLimited: List() from $additionalManga.subList(0, $numToLimit)
+    $list: List()
+    $templist: List() from collect(Manga(lista_zanrova contains $zanr, !($list contains this)))
+    $brojaci: List() from collect(ZanrBrojac())
+    $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId(), brojac > 0) from $brojaci
 then
-    $collectedManga.addAll($additionalMangaLimited);
-    update($collectedManga);
+    System.out.println("Zanr: " + $zanr);
+    modify($list) {
+        addAll($templist);
+    }
+    $zanrBrojac.smanjiBrojac();
 end
 
+rule "Izbaci duplikate"
+salience 8
+when
+    $list: List()
+    $set: HashSet() from new HashSet($list)
+then
+    $list.clear();
+    $list.addAll($set);
+    update($list);
+end
+
+rule "Izbaci mangu ako je vec na listi korisnika"
+salience 5
+when
+  $korisnik: Korisnik()
+  $list: List()
+  $manga: Manga(this memberOf $list)
+  eval($korisnik.getTrenutno_citanje().contains($manga) ||
+       $korisnik.getIstorija2().contains($manga) ||
+       $korisnik.getPlanira_citanje().contains($manga) ||
+       $korisnik.getOdustao_citanje().contains($manga) ||
+       $korisnik.getCrna_lista2().contains($manga))
+then
+   System.out.println("Manga id: " + $manga.getId());
+  modify($list) {
+    remove($manga);
+  }
+end
 

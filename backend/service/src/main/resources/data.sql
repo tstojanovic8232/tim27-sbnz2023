@@ -1,1 +1,0 @@
-insert into korisnik(id, email, korisniko_ime, lozinka) values(nextval('korisnik_id_seq'), 'i@gmail.com','igor',123);

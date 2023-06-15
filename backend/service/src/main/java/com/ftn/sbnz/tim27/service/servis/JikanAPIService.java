@@ -2,10 +2,7 @@ package com.ftn.sbnz.tim27.service.servis;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ftn.sbnz.tim27.model.models.Anime;
-import com.ftn.sbnz.tim27.model.models.Manga;
-import com.ftn.sbnz.tim27.model.models.Studio;
-import com.ftn.sbnz.tim27.model.models.Zanr;
+import com.ftn.sbnz.tim27.model.models.*;
 import com.ftn.sbnz.tim27.model.repos.AnimeRepo;
 import com.ftn.sbnz.tim27.model.repos.MangaRepo;
 import com.ftn.sbnz.tim27.model.repos.StudioRepo;
@@ -22,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Service
@@ -37,6 +35,9 @@ public class JikanAPIService {
     @Autowired
     private StudioRepo studioRepo;
 
+    @Autowired
+    private KorisnikServis korisnikServis;
+
     public JikanAPIService() {
         this.httpClient = HttpClientBuilder.create().build();
         this.objectMapper = new ObjectMapper();
@@ -46,7 +47,7 @@ public class JikanAPIService {
         String apiUrl = "https://api.jikan.moe/v4/manga";
 
         try {
-            for (int i = 1; i < 31; i++) {
+            for (int i = 1; i < 6; i++) {
                 HttpGet request = new HttpGet(apiUrl + "?page=" + i);
                 HttpResponse response = httpClient.execute(request);
 
@@ -126,8 +127,7 @@ public class JikanAPIService {
 
         try {
 
-            for (int i = 1; i < 31; i++) {
-
+            for (int i = 1; i < 6; i++) {
 
 
                 HttpGet request = new HttpGet(apiUrl + "&page=" + i);
@@ -208,4 +208,113 @@ public class JikanAPIService {
             e.printStackTrace();
         }
     }
+
+    public void addMediaToKorisnikLists() {
+        List<Korisnik> korisnici = korisnikServis.pronadjiSveRadnike();
+        List<Anime> allAnime = animeRepo.findAll();
+        List<Manga> allManga = mangaRepo.findAll();
+
+
+        for (Korisnik korisnik : korisnici) {
+            if (!allAnime.isEmpty()) {
+
+                Random random = new Random();
+                List<Anime> list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
+                    list.add(randomAnime);
+
+                }
+                korisnik.setTrenutno_gledanje(list);
+
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
+                    list.add(randomAnime);
+
+                }
+                korisnik.setIstorija(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
+                    list.add(randomAnime);
+
+                }
+                korisnik.setPlanira_gledanje(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
+                    list.add(randomAnime);
+
+                }
+                korisnik.setOdustao_gledanje(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Anime randomAnime = allAnime.get(random.nextInt(allAnime.size()));
+                    list.add(randomAnime);
+
+                }
+                korisnik.setCrna_lista(list);
+
+            }
+
+            if (!allManga.isEmpty()) {
+                Random random = new Random();
+                List<Manga> list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Manga randomManga = allManga.get(random.nextInt(allManga.size()));
+                    list.add(randomManga);
+
+                }
+                korisnik.setTrenutno_citanje(list);
+
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Manga randomManga = allManga.get(random.nextInt(allManga.size()));
+                    list.add(randomManga);
+
+                }
+                korisnik.setIstorija2(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Manga randomManga = allManga.get(random.nextInt(allManga.size()));
+                    list.add(randomManga);
+
+                }
+                korisnik.setPlanira_citanje(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Manga randomManga = allManga.get(random.nextInt(allManga.size()));
+                    list.add(randomManga);
+
+                }
+                korisnik.setOdustao_citanje(list);
+                list = new ArrayList<>();
+                for (int j = 0; j < 5; j++) {
+                    Manga randomManga = allManga.get(random.nextInt(allManga.size()));
+                    list.add(randomManga);
+
+                }
+                korisnik.setCrna_lista2(list);
+            }
+
+
+                korisnikServis.izmeniRadnika(korisnik);
+        }
+    }
+
+    public void insertUsers() {
+        Korisnik korisnik = new Korisnik();
+        korisnik.setEmail("i@gmail.com");
+        korisnik.setLozinka("123");
+        korisnik.setKorisniko_ime("igor");
+
+        korisnikServis.dodajRadnika(korisnik);
+        korisnik = new Korisnik();
+        korisnik.setEmail("t@gmail.com");
+        korisnik.setLozinka("123");
+        korisnik.setKorisniko_ime("tea");
+        korisnikServis.dodajRadnika(korisnik);
+    }
+
 }
