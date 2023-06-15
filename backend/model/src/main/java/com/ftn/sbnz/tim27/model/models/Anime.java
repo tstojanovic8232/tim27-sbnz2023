@@ -35,7 +35,9 @@ public class Anime {
     private String godina;
     private String izvor;
 
-
+    public Anime(Long id) {
+        this.id = id;
+    }
 
     public Anime(Long id, String naziv, List<Studio> studiji, List<Zanr> zanrovi, String sezona, String godina, String izvor) {
         this.id = id;

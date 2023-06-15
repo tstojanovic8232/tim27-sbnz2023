@@ -4,14 +4,12 @@ import com.ftn.sbnz.tim27.model.models.*;
 import org.junit.jupiter.api.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
-import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.ClassObjectFilter;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class AnimeTests {
@@ -343,7 +341,9 @@ public class AnimeTests {
     @Test
     public void testNegativniFeedbackZaCeoAnimeZanr() {
         KieServices kieServices = KieServices.Factory.get();
+
         KieContainer kieContainer = kieServices.getKieClasspathContainer();
+
         KieBase kieBase = kieContainer.getKieBase("animeKieBase");
 
         KieSession kieSession = kieBase.newKieSession();
@@ -561,16 +561,16 @@ public class AnimeTests {
         korisnik.setCrna_lista(new ArrayList<>());
 
         korisnik.getTrenutno_gledanje().add(anime1);
-        korisnik.getTrenutno_gledanje().add(anime2);
+        korisnik.getTrenutno_gledanje().add(anime14);
 
-        korisnik.getIstorija().add(anime3);
-        korisnik.getIstorija().add(anime4);
+        korisnik.getIstorija().add(anime2);
+        korisnik.getIstorija().add(anime12);
 
-        korisnik.getPlanira_gledanje().add(anime5);
+        korisnik.getPlanira_gledanje().add(anime3);
 
-        korisnik.getOdustao_gledanje().add(anime6);
+        korisnik.getOdustao_gledanje().add(anime4);
 
-        korisnik.getCrna_lista().add(anime7);
+        korisnik.getCrna_lista().add(anime5);
 
         Studio studio1 = new Studio(1L, "Wit Studio");
         Studio studio2 = new Studio(2L, "Madhouse");

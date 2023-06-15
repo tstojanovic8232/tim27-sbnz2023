@@ -2,6 +2,9 @@ package pravila_preporuka_anime;
 
 import com.ftn.sbnz.tim27.model.models.*;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 rule "prebroji anime zanrove iz trenutne liste korisnika"
 salience 20
@@ -17,7 +20,7 @@ then
 end
 
 rule "prebroji anime zanrove iz istorije gledanja korisnika"
-salience 20
+salience 19
 when
     $korisnik: Korisnik($animeLista: istorija)
     $anime: Anime(zanrovi != null, !zanrovi.isEmpty()) from $animeLista
@@ -30,7 +33,7 @@ then
 end
 
 rule "prebroji anime zanrove iz liste planiranih naslova korisnika"
-salience 20
+salience 18
 when
     $korisnik: Korisnik($animeLista: planira_gledanje)
     $anime: Anime(zanrovi != null, !zanrovi.isEmpty()) from $animeLista
@@ -43,7 +46,7 @@ then
 end
 
 rule "prebroji anime studija iz trenutne liste korisnika"
-salience 20
+salience 17
 when
     $korisnik: Korisnik($animeLista: trenutno_gledanje)
     $anime: Anime(studiji != null) from $animeLista
@@ -56,7 +59,7 @@ then
 end
 
 rule "prebroji anime studija iz istorije gledanja korisnika"
-salience 20
+salience 16
 when
     $korisnik: Korisnik($animeLista: istorija)
     $anime: Anime(studiji != null) from $animeLista
@@ -69,7 +72,7 @@ then
 end
 
 rule "prebroji anime studija iz liste planiranih naslova korisnika"
-salience 20
+salience 15
 when
     $korisnik: Korisnik($animeLista: planira_gledanje)
     $anime: Anime(studiji != null) from $animeLista
@@ -82,7 +85,7 @@ then
 end
 
 rule "nadji najgledaniji anime zanr"
-salience 15
+salience 14
 when
     $zanrBrojaci: List() from collect(ZanrBrojac())
     $maxBrojac: Integer() from accumulate(
@@ -96,13 +99,13 @@ when
 then
 //    System.out.println($najgledanijiZanrovi);
     for (Object item : $najgledanijiZanrovi) {
-//        System.out.println(((ZanrBrojac)item).getZanr());
+        System.out.println(((ZanrBrojac)item).getZanr());
         insert(((ZanrBrojac)item).getZanr());
     }
 end
 
 rule "nadji najgledaniji anime studio"
-salience 15
+salience 13
 when
     $studioBrojaci: List() from collect(StudioBrojac())
     $maxBrojac: Integer() from accumulate(
@@ -116,57 +119,68 @@ when
 then
 //    System.out.println($najgledanijiStudiji);
     for (Object item : $najgledanijiStudiji) {
-//        System.out.println(((StudioBrojac)item).getStudio());
+        System.out.println(((StudioBrojac)item).getStudio());
         insert(((StudioBrojac)item).getStudio());
     }
 end
 
-rule "Pokupi po 50 anime po zanru"
+rule "Pokupi anime po zanru"
 salience 10
 when
     $zanr: Zanr()
-    $recList: List() // Empty list to hold the results
-
-    accumulate(
-        $anime: Anime(zanrovi contains $zanr),
-        $collectedAnime: collectList($anime),
-        $collectedAnime.size() <= 50
-    )
+    $list: List()
+    $templist: List() from collect(Anime(zanrovi contains $zanr, !($list contains this)))
+    $brojaci: List() from collect(ZanrBrojac())
+    $zanrBrojac: ZanrBrojac(zanr.id == $zanr.getId(), brojac > 0) from $brojaci
 then
-    $recList.addAll($collectedAnime);
-    update($recList);
+//    System.out.println("Zanr: " + $zanr);
+    modify($list) {
+        addAll($templist);
+    }
+    $zanrBrojac.smanjiBrojac();
 end
 
-rule "Pokupi po 50 anime po studiju"
-salience 10
+rule "Pokupi anime po studiju"
+salience 9
 when
     $studio: Studio()
-    $recList: List()
-
-    accumulate(
-        $anime: Anime(studiji contains $studio),
-        $collectedAnime: collectList($anime),
-        $collectedAnime.size() <= 50
-    )
+    $list: List()
+    $templist: List() from collect(Anime(studiji contains $studio, !($list contains this)))
+    $brojaci: List() from collect(StudioBrojac())
+    $studioBrojac: StudioBrojac(studio.id == $studio.getId(), brojac > 0) from $brojaci
 then
-    $recList.addAll($collectedAnime);
-    update($recList);
+//    System.out.println("Studio: " + $studio);
+    modify($list) {
+        addAll($templist);
+    }
+    $studioBrojac.smanjiBrojac();
+end
+
+rule "Izbaci duplikate"
+salience 8
+when
+    $list: List()
+    $set: HashSet() from new HashSet($list)
+then
+    $list.clear();
+    $list.addAll($set);
+    update($list);
 end
 
 rule "Izbaci anime ako je vec na listi korisnika"
 salience 5
 when
-    $korisnik: Korisnik()
-    $recList: List()
-    $anime: Anime() from $recList
-
-    not(Anime(id == $anime.getId()) from $korisnik.getTrenutno_gledanje())
-    not(Anime(id == $anime.getId()) from $korisnik.getIstorija())
-    not(Anime(id == $anime.getId()) from $korisnik.getPlanira_gledanje())
-    not(Anime(id == $anime.getId()) from $korisnik.getOdustao_gledanje())
-    not(Anime(id == $anime.getId()) from $korisnik.getCrna_lista())
+  $korisnik: Korisnik()
+  $list: List()
+  $anime: Anime(this memberOf $list)
+  eval($korisnik.getTrenutno_gledanje().contains($anime) ||
+       $korisnik.getIstorija().contains($anime) ||
+       $korisnik.getPlanira_gledanje().contains($anime) ||
+       $korisnik.getOdustao_gledanje().contains($anime) ||
+       $korisnik.getCrna_lista().contains($anime))
 then
-    $recList.remove($anime);
-    System.out.println($recList);
-    update($recList);
+//    System.out.println("Anime id: " + $anime.getId());
+  modify($list) {
+    remove($anime);
+  }
 end
