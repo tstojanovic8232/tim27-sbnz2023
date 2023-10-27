@@ -17,6 +17,10 @@ import { BrowseMangaComponent } from './browse-manga/browse-manga.component';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import { ProfilComponent } from './profil/profil.component';
+import { StarComponent } from './star/star.component';
+import { RegisterComponent } from './register/register.component';
+import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
+
 
 
 
@@ -35,7 +39,10 @@ import { ProfilComponent } from './profil/profil.component';
     NavbarmangaComponent,
     BrowseMangaComponent,
     LoginComponent,
-    ProfilComponent
+    ProfilComponent,
+    StarComponent,
+    RegisterComponent,
+    RegistrationSuccessComponent
 
   ],
     imports: [

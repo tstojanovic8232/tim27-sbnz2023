@@ -21,6 +21,7 @@ export class MangaDetailsComponent {
   getAnime():void{
     const id = +this.route.snapshot.params['id'];
     this.animeService.getManga(id).subscribe((manga) => (this.manga = manga));
+    console.log(this.manga?.data.chapters);
   }
 
 

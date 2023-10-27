@@ -37,104 +37,63 @@
           Thorfinn, once a fearless and ruthless warrior, becomes entangled in a series of battles and conflicts as he travels with Askeladd's band of warriors. Over time, he begins to question the path of violence and vengeance he has chosen.</div>
       </li>
     </ul>
+
   </div>
+
+
 </div>
-
-<!--<div class="wrapper" >-->
-
-<!--  <h2><strong>Most popular</strong></h2>-->
-
-<!--  <div class="cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">-->
-
-<!--    <figure class="card">-->
-
-<!--      <img src="{{manga.images.jpg.image_url}}" />-->
-
-<!--      <figcaption>{{manga.title}}</figcaption>-->
-
-<!--    </figure>-->
-
-
-<!--  </div>-->
-
-<!--</div>-->
 
 
 <section >
+
   <div class="row">
-    <div class="main-menu">
-      <br>
-      <div class="archive">Most popular</div>
-      <br>
-    </div>
 
     <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">
       <div class="book-card">
-        <div class="content-wrapper">
+
           <a routerLink="/manga/{{manga.mal_id}}">
             <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">
           </a>
           <div class="card-content">
-            <div class="book-name">{{manga.title}}</div>
-            <div class="book-by">Authors:
+            <div class="book-name">{{manga.title}} <app-star [rating]="manga.score"></app-star></div>
+            <hr>
+            <div class="book-by">
               <span *ngFor="let author of manga.authors; let last = last">
-                    {{author.name}}
+                    {{author.name.replace(',','').trim()}}
                 <ng-container *ngIf="!last">, </ng-container>
                   </span>
             </div>
-            <div class="book-by">Genres:
-              <span *ngFor="let genre of manga.genres; let last = last">
-                    {{genre.name}}
-                <ng-container *ngIf="!last">, </ng-container>
-                  </span>
-            </div>
-<!--            <div class="book-name">Chapters:{{manga.chapters}} Volumes:{{manga.volumes}}</div>-->
-            <div class="book-by">Rank:{{manga.rank}}</div>
 
-            <div class="book-sum card-sum">
-              {{manga.synopsis}}
-            </div>
+
+
+            <!--            <div class="book-by">Genres:-->
+<!--              <span *ngFor="let genre of manga.genres; let last = last">-->
+<!--                    {{genre.name}}-->
+<!--                <ng-container *ngIf="!last">, </ng-container>-->
+<!--                  </span>-->
+<!--            </div>-->
+<!--            <div class="book-name">Chapters:{{manga.chapters}} Volumes:{{manga.volumes}}</div>-->
+<!--            <div class="book-by">Rank:{{manga.rank}}</div>-->
+
+<!--            <div class="book-sum card-sum">-->
+<!--              {{manga.synopsis}}-->
+<!--            </div>-->
           </div>
         </div>
       </div>
 
     </div>
-  </div>
+
+
+
+
+
+
+
+
 </section>
 
 
 
 
-
-
-<!--&lt;!&ndash;<section class="book-store" id="book-store">&ndash;&gt;-->
-<!--&lt;!&ndash;  <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;    <div class="main-menu">&ndash;&gt;-->
-<!--&lt;!&ndash;      <br>&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="archive">Archive</div>&ndash;&gt;-->
-<!--&lt;!&ndash;      <br>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="book-card">&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="content-wrapper">&ndash;&gt;-->
-<!--&lt;!&ndash;          <a routerLink="/anime/{{manga.mal_id}}">&ndash;&gt;-->
-<!--&lt;!&ndash;          <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">&ndash;&gt;-->
-<!--&lt;!&ndash;          </a>&ndash;&gt;-->
-<!--&lt;!&ndash;          <div class="card-content">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="book-name">{{manga.title}}</div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <div class="book-by">Rank:{{manga.rank}}</div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <div class="book-sum card-sum">&ndash;&gt;-->
-<!--&lt;!&ndash;              {{manga.synopsis}}&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;          </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;      </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-<!--&lt;!&ndash;</section>&ndash;&gt;-->
-<!--&lt;!&ndash;<app-section></app-section>&ndash;&gt;-->
 

@@ -1,26 +1,116 @@
+<app-navbarmanga></app-navbarmanga>
 <div class="container">
-  <div class="list">
-    <ul>
-      <li *ngFor="let anime of animeData">
-        {{anime.id}}-{{anime.naziv}}
-      </li>
+  <div class="header-container">
+    <img src="./assets/img/cover.jpg" alt="" class="header-image" />
+    <div class="header">
+      <svg fill="#ffffff" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg" class="header-icon">
 
-    </ul>
-    <div>
-      <button type="button" (click)="addAnime()">Dodaj na listu</button>
-      <button type="button" (click)="addAnimeRandom()">Dodaj nasumično na listu</button>
-    </div>
+      </svg>
+
+      <svg fill="#ffffff" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg" class="u-float-right header-icon">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        <path d="M0 0h24v24H0z" fill="none"/>
+      </svg>
+      <h1 class="main-heading">Hugh Jackman</h1>
+      <span class="tag">User</span>
+      <span class="tag">Anime lover</span>
+      <span class="tag">Manga lover</span>
+      <div class="stats">
+        <span class="stat-module">
+          Movies <span class="stat-number">56</span>
+        </span>
+        <span class="stat-module">
+          Plays <span class="stat-number">29</span>
+        </span>
+        <span class="stat-module">
+          Musicals <span class="stat-number">11</span>
+        </span>
+      </div>
+    </div> <!-- END header -->
   </div>
-  <div class="list">
-    <ul>
-      <li *ngFor="let manga of mangaData">
-        {{manga.id}}-{{manga.naziv}}
-      </li>
-    </ul>
-    <div>
-      <button type="button" (click)="addManga()">Dodaj na listu</button>
-      <button type="button" (click)="addMangaRandom()">Dodaj nasumično na listu</button>
+
+  <div class="overlay-header"></div>
+
+  <div class="body">
+    <img src="./assets/img/profile1.png" alt="Hugh Jackman" class="body-image" />
+    <div class="body-action-button u-flex-center">
+      <svg fill="#ffffff" height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        <path d="M0 0h24v24H0z" fill="none"/>
+      </svg>
     </div>
-  </div>
+
+    <div class="u-clearfix"></div>
+    <div class="body-info">
+      <p>
+        Hey there! I'm an avid anime lover with a passion for exploring different genres and discovering hidden gems. From action-packed shonen to heartwarming slice-of-life, I'm always on the lookout for the next series to dive into. When I'm not glued to the screen, you'll find me experimenting with Japanese cuisine or attending cosplay events with fellow enthusiasts.
+      </p>
+
+    </div>
+    <h2><strong>My manga<span>( {{count}} )</span></strong></h2>
+    <div class="card u-clearfix">
+
+
+      <div class="wrapper" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage: p, totalItems:maxCount}">
+
+
+
+        <div class="cards">
+
+          <figure class="card">
+
+            <img src="{{manga.images.jpg.image_url}}" />
+
+            <figcaption>{{manga.title}}</figcaption>
+
+          </figure>
+
+
+
+        </div>
+
+
+
+
+
+      </div>
 
 </div>
+
+
+    <!--      <span class="card-heading">My Manga</span>-->
+    <!--      <div class="grid-shuffle">-->
+    <!--        <ul id="grid" class="row">-->
+
+    <!--          <li class="book-item small-12 medium-6 columns"-->
+    <!--              *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage: p, totalItems:maxCount}"-->
+
+    <!--              data-groups='["classic"]' data-date-created='1937' data-title='' data-color='#fcc278'>-->
+
+    <!--            <div class="bk-img">-->
+
+
+    <!--              <div class="bk-wrapper">-->
+
+    <!--                <div class="bk-book bk-bookdefault">-->
+    <!--                  <div class="bk-front">-->
+    <!--                    <div class="bk-cover"-->
+    <!--                         [ngStyle]="{ 'background-image': 'url(' + manga.images.jpg.image_url + ')' }"></div>-->
+    <!--                  </div>-->
+
+    <!--                  <div class="bk-back"></div>-->
+    <!--                  <div class="bk-left"></div>-->
+    <!--                </div>-->
+    <!--              </div>-->
+    <!--            </div>-->
+
+
+
+    <!--          </li>-->
+    <!--        </ul>-->
+    <!--      </div>-->
+
+    <!--    </div>-->
+
+    <!--  </div>-->
+

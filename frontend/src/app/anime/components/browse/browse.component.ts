@@ -25,6 +25,7 @@ export class BrowseComponent {
 
       this.totalPages = this.range(1, this.lastVisiblePage);
       this.fetchData();
+      console.log(response)
     });
   }
 
@@ -52,7 +53,7 @@ export class BrowseComponent {
   addItemToData(item: any): void {
     var temp = new TopAnimeItem();
     temp.title = item.title;
-    temp.image = item.images.jpg.image_url;
+    temp.image = item.images.jpg.large_image_url;
     this.data.push(temp);
   }
 

@@ -214,6 +214,7 @@ interface PaginationModel {
 export class MangaService {
 
   private mechaCache$: ReplaySubject<ListResponseModel<Manga>> = new ReplaySubject<ListResponseModel<Manga>>(1);
+
   apiUrl:string="https://api.jikan.moe/v4/manga";
   mostpopular:string="https://api.jikan.moe/v4/manga";
   action:string="https://api.jikan.moe/v4/manga?genres=1&limit=25";
@@ -251,6 +252,7 @@ export class MangaService {
       ).subscribe((response: any) => {
         if (response && response.results && Array.isArray(response.results)) {
           this.mangaData.push(...response.results); // Store the manga data
+
         }
       });
     }

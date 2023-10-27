@@ -3,6 +3,8 @@ import {Media} from "../media";
 import {HttpClient} from "@angular/common/http";
 import {Location} from "@angular/common";
 import {LocalService} from "../local.service";
+import {Manga, MangaService} from "../manga.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profil',
@@ -11,91 +13,54 @@ import {LocalService} from "../local.service";
 })
 export class ProfilComponent implements OnInit {
 
-  mangaData: Media[] = [];
-  animeData: Media[] = [];
-  apiurl = "http://localhost:8084/korisnik"
-  korisnik_id: number;
-
-  constructor(private http: HttpClient, private location: Location, private localService: LocalService) {
-    let temp = localService.getData('id');
-    if (temp)
-      this.korisnik_id = parseInt(temp);
-    else this.korisnik_id = 0;
-    this.loadAnimeRecs();
-    this.loadMangaRecs();
+  mangas: Manga[] = [];
+  dataLoaded = false;
+  p: number = 1;
+  count: number = 18;
+  maxCount: number | any;
+  itemsPerPage: number = 10; // Number of items to display per page
+  totalItems: number | any; // Total number of items
+  pId: number | any;
+  apiNum: number | any;
+  apiUrl = 'https://api.jikan.moe/v4/manga'; // Assuming this is the base API URL
+  requestInterval = 1000 / 3;
+  mangaData: any[] = [];
+  public ratingNumber: string|any;
+  constructor(private mangaService: MangaService, private router: Router, private httpclient: HttpClient) {
   }
 
-  loadMangaRecs() {
-    this.http.get(`${this.apiurl}/manga/${this.korisnik_id}`).subscribe((data: any) => {
-      for (const item of data) {
-        const temp: Media = new Media();
-        temp.id = item.id;
-        temp.naziv = item.naziv;
+  ngOnInit(): void {
 
-        this.mangaData.push(temp);
-      }
-      this.mangaData.sort((a, b) => {
-        if (a.id < b.id)
-          return -1;
-        if (a.id > b.id)
-          return 1;
-        return 0
+    this.mangaService.getMangaData();
+    this.mangaData = this.mangaService.mangaData;
+    this.getMostPopularMangas();
 
-      })
-    })
-  }
 
-  loadAnimeRecs() {
-    this.http.get(`${this.apiurl}/anime/${this.korisnik_id}`).subscribe((data: any) => {
-      for (const item of data) {
-        const temp: Media = new Media();
-        temp.id = item.id;
-        temp.naziv = item.naziv;
-        this.animeData.push(temp);
-      }
-      this.animeData.sort((a, b) => {
-        if (a.id < b.id)
-          return -1;
-        if (a.id > b.id)
-          return 1;
-        return 0
-
-      })
-    })
-  }
-
-  ngOnInit() {
 
   }
 
 
-  addManga() {
-    this.http.post(`${this.apiurl}/manga/${this.korisnik_id}/dodajMangu`, this.mangaData[0].id).subscribe((response: any) => {
-      console.log(response)
-      window.location.reload();
-    })
+
+
+
+  getMostPopularMangas() {
+    this.mangaService
+      .getMostPopularMangas()
+      .subscribe((response) => (this.mangas = response.data), null, () => {
+        console.log(this.mangas)
+
+
+      });
+    this.dataLoaded = true;
+    console.log(this.mangas)
+
+
+
   }
 
-  addAnime() {
-    this.http.post(`${this.apiurl}/anime/${this.korisnik_id}/dodajAnime`, this.animeData[0].id).subscribe((response: any) => {
-      console.log(response)
-      window.location.reload();
 
-    })
-  }
+  handleButtonClick(mangaId:number) {
 
-  addAnimeRandom() {
-    this.http.post(`${this.apiurl}/manga/${this.korisnik_id}/dodajMangu`, 0).subscribe((response: any) => {
-      console.log(response)
-      window.location.reload();
-    })
-  }
-
-  addMangaRandom() {
-    this.http.post(`${this.apiurl}/anime/${this.korisnik_id}/dodajAnime`, 0).subscribe((response: any) => {
-      console.log(response)
-      window.location.reload();
-
-    })
+    this.router.navigate(['/manga', mangaId]);
   }
 }

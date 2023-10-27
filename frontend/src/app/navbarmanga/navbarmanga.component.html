@@ -1,11 +1,18 @@
 <nav xmlns:paginate="http://www.w3.org/1999/xhtml" xmlns:paginate="http://www.w3.org/1999/xhtml">
+
   <a href="">
     <img class="logo" src="https://anilist.co/img/icons/icon.svg" alt="">
   </a>
-  <a [routerLink]="'/manga/'">Home</a>
-  <a href="">Manga List</a>
-  <a  [routerLink]="'/browsemanga/'">Browse</a>
-  <a [routerLink]="'/login/'">Login</a>
-  <a href="">Sign up</a>
+
+  <div class="right">
+    <ul>
+      <li><a [routerLink]="'/manga/'">Home</a></li>
+      <li><a href="">Manga List</a>
+      <li><a  [routerLink]="'/browsemanga/'">Browse</a></li>
+      <li><a [routerLink]="'/login/'">Login</a></li>
+      <li> <a href="">Sign up</a></li>
+    </ul>
+  </div>
 
 </nav>
+

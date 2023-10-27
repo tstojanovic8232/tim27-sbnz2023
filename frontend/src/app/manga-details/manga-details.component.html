@@ -1,55 +1,83 @@
 <app-navbarmanga></app-navbarmanga>
 
-
-
-
-
-<div class="card my-5" *ngIf="manga">
-
-
-  <div class="card-header">
-    <h3 class="card-title" style="margin-left: 20px">{{ manga.data.title }}</h3>
-    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">Genres:</span>
-    <span class="badge badge-pill bg-danger me-3" style="margin-left: 5px;font-size: 20px;color: black "
-          *ngFor="let genre of manga.data.genres; let last = last">
-             {{genre.name}}
-      <ng-container *ngIf="!last">, </ng-container>
-        </span>
-    <span class="badge badge-pill bg-primary me-3" style="margin-left: 10px;font-size: 18px;color:black ">
-         Type: {{ manga.data.type }}
-        </span>
-
-    <span class="badge badge-pill bg-success me-3" style="margin-left: 20px;font-size: 18px;color: black ">
-          Score: {{ manga.data.score }}
-        </span>
-    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">
-          Status: {{ manga.data.status }}
-        </span>
+ <div class="container" *ngIf="manga">
+  <div class="header-container" >
+ <img src="{{ manga.data.images.jpg.large_image_url }}" alt="" class="header-image"/>
   </div>
-  <div class="card-body">
 
-    <div class="row">
-      <div class="col-lg-2 col-md-12 col-sm-12 text-center order-0">
-        <img class="img-fluid" src="{{ manga.data.images.jpg.image_url }}" alt="{{ manga.data.title }}"
-             style="border-radius: 10px;margin-left: 20px">
-      </div>
-      <div class="col-lg-5 col-md-6 col-sm-12 order-1">
-        <p class="card-text" style="margin-left: 20px">{{ manga.data.synopsis }}</p>
+  <div class="header">
+      <h1 class="main-heading">{{ manga.data.title }}</h1>
+    <app-star [rating]="manga.data.score"></app-star>
+      <span class="tag">Manga</span>
+      <span class="tag"> Score: {{ manga.data.score }}</span>
+      <span class="tag" *ngFor="let genre of manga.data.genres; let last = last">
+        {{genre.name}}
+        <ng-container *ngIf="!last">, </ng-container></span>
 
-      </div>
-      <div class="col-lg-5 col-md-6 col-sm-12 order-2">
-        <div class="card-text">
-          <p style="margin-left: 20px">{{manga.data.background}}</p>
+    </div> <!-- END header -->
 
-        </div>
-      </div>
+  <div class="overlay-header"></div>
 
-<!--                  <div class="book-by">Rank:{{manga.data.rank}}</div>-->
+  <div class="body">
+    <img src="{{ manga.data.images.jpg.image_url }}" alt="Hugh Jackman" class="body-image" />
+
+
+    <div class="u-clearfix"></div>
+    <div class="body-info">
+      <p>Chapters: {{manga.data.chapters}}</p>
+      <p>
+        {{ manga.data.synopsis }}
+      </p>
+
     </div>
 
-  </div>
 
-</div>
+<!--<div class="card my-5" *ngIf="manga">-->
+
+
+<!--  <div class="card-header">-->
+<!--    <h3 class="card-title" style="margin-left: 20px">{{ manga.data.title }}</h3>-->
+<!--    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">Genres:</span>-->
+<!--    <span class="badge badge-pill bg-danger me-3" style="margin-left: 5px;font-size: 20px;color: black "-->
+<!--          *ngFor="let genre of manga.data.genres; let last = last">-->
+<!--             {{genre.name}}-->
+<!--      <ng-container *ngIf="!last">, </ng-container>-->
+<!--        </span>-->
+<!--    <span class="badge badge-pill bg-primary me-3" style="margin-left: 10px;font-size: 18px;color:black ">-->
+<!--         Type: {{ manga.data.type }}-->
+<!--        </span>-->
+
+<!--    <span class="badge badge-pill bg-success me-3" style="margin-left: 20px;font-size: 18px;color: black ">-->
+<!--          Score: {{ manga.data.score }}-->
+<!--        </span>-->
+<!--    <span class="badge badge-pill bg-danger me-3" style="margin-left: 20px; margin-right: 20px;font-size: 18px;color: black ">-->
+<!--          Status: {{ manga.data.status }}-->
+<!--        </span>-->
+<!--  </div>-->
+<!--  <div class="card-body">-->
+
+<!--    <div class="row">-->
+<!--      <div class="col-lg-2 col-md-12 col-sm-12 text-center order-0">-->
+<!--        <img class="img-fluid" src="{{ manga.data.images.jpg.image_url }}" alt="{{ manga.data.title }}"-->
+<!--             style="border-radius: 10px;margin-left: 20px">-->
+<!--      </div>-->
+<!--      <div class="col-lg-5 col-md-6 col-sm-12 order-1">-->
+<!--        <p class="card-text" style="margin-left: 20px">{{ manga.data.synopsis }}</p>-->
+
+<!--      </div>-->
+<!--      <div class="col-lg-5 col-md-6 col-sm-12 order-2">-->
+<!--        <div class="card-text">-->
+<!--          <p style="margin-left: 20px">{{manga.data.background}}</p>-->
+
+<!--        </div>-->
+<!--      </div>-->
+
+<!--&lt;!&ndash;                  <div class="book-by">Rank:{{manga.data.rank}}</div>&ndash;&gt;-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--</div>-->
 
 
 
