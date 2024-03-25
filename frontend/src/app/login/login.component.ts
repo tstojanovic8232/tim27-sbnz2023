@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, Renderer2} from '@angular/core';
 import {LoginService} from "../login.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Korisnik} from "../korisnik";
 import {LocalService} from "../local.service";
 
@@ -12,37 +12,40 @@ import {LocalService} from "../local.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  id: number | undefined;
-  prezime: string | undefined;
-  uloga: string | undefined;
+  container!: HTMLElement;
+  registerBtn!: HTMLElement;
+  loginBtn!: HTMLElement;
 
-  korisnik: Korisnik = new Korisnik();
-  username:string='';
-  password:string='';
+  showModal: boolean = false; // Add this line to track modal visibility
 
-  constructor(private loginservice: LoginService, private router: Router,private localservice:LocalService) {
+  isLoggedIn: boolean = false; // Add this line to declare the isLoggedIn property
 
+  constructor(
+
+    private route: ActivatedRoute,
+    private router: Router,
+
+
+  ) {}
+
+
+  ngOnInit(): void {
+    this.container = document.getElementById('container')!;
+    this.registerBtn = document.getElementById('register')!;
+    this.loginBtn = document.getElementById('login')!;
+
+    this.registerBtn.addEventListener('click', () => {
+      this.container.classList.add('active');
+    });
+
+    this.loginBtn.addEventListener('click', () => {
+      this.container.classList.remove('active');
+    });
   }
 
-  onSubmit() {
-     console.log(this.username,this.password)
-    this.loginservice.loginUser(this.username, this.password).subscribe(
-      (data:any) => {
-        console.log(data)
 
-        this.localservice.saveData('id',data.id.toString())
-        const receivedKorisnik: Korisnik = data;
-        const ime = receivedKorisnik.korisniko_ime;
-        const lozinka = receivedKorisnik.lozinka;
 
-        this.router.navigate(['/profil']);
 
-      },
-      (error) => {
-        console.log(error)
-        alert('Sorry, bad credentials!');
-      }
-    );
 
-  }
+
 }
