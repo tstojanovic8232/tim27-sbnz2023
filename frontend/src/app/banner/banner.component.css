@@ -1,0 +1,69 @@
+.xbox {
+  display: grid;
+  margin-top:100px;
+  margin-left: 150px;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  height: 350px;
+  width: 85%;
+  margin-bottom: 20px;
+  background: linear-gradient(to left, #1c3d63, #05c9c9);
+  border-radius: 15px;
+}
+
+.content {
+  margin-left:50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-family:Khand;
+  letter-spacing: 2px;
+  font-style:italic;
+  margin-bottom: 10px;
+}
+.content p{
+  font-family:Khand;
+}
+
+.image {
+  background: url('src/assets/img/new.png');
+  background-size: cover; /* Maintain aspect ratio and fit the image within the container */
+  background-position: center;/* Center the background image */
+  clip-path: polygon(11% 0, 100% 0, 100% 100%, 0% 100%);
+  max-width: 100%; /* Limit the width of the image to its container */
+  height: auto; /* Allow the height to adjust proportionally */
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+.btn {
+  /* Your existing button styles */
+  margin-top:20px;
+  background-color: transparent;
+  font-family:Khand;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  border-radius:15px;
+  text-decoration: none;
+}
+
+.btn:hover{
+
+  background-color: white;
+  color:black;
+}
+
+
+.btn:focus {
+  outline: none; /* Remove default focus outline */
+}

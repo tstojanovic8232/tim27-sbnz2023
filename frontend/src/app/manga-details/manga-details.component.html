@@ -1,55 +1,34 @@
 <app-navbarmanga></app-navbarmanga>
 
-<!--<div class="kaurukaanibox" *ngIf="manga">-->
-<!--  <p class="sinop">-->
-<!--    <b>Synopsis</b>-->
-<!--    {{manga.data.synopsis}}-->
-<!--  <div class="a-info">-->
-<!--    <strong>Zom 100: Zombie ni Naru made ni Shitai 100 no Koto</strong>-->
-<!--    <img src="{{ manga.data.images.jpg.large_image_url }}" />-->
-<!--    <table>-->
-<!--      <tbody>-->
-<!--      <tr><th>Alternative</th><td>{{manga.data.title}}</td></tr>-->
-<!--      <tr><th>Status</th><td>Currently Airing</td></tr>-->
-<!--      <tr><th>Aired</th><td class="k-link">{{manga.data.year}}</td></tr>-->
-<!--      <tr><th>Chapters</th><td>{{manga.data.chapters}}</td></tr>-->
-<!--      <tr><th>Ganre</th><td class="k-link" *ngFor="let genre of manga.data.genres; let last = last">{{genre.name}}</td></tr>-->
-<!--      <tr><th>Duration</th><td>24 min. per ep.</td></tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--<a class="v-gen" href="https://www.kauruka.com/p/anime-info-generator.html" target="_blank">Generator Code</a>-->
- <div class="container" *ngIf="manga">
-  <div class="header-container" >
- <img src="{{ manga.data.images.jpg.large_image_url }}" alt="" class="header-image"/>
+<div class="container" *ngIf="manga">
+  <div class="header-container">
+    <img src="{{ manga.data.images.jpg.large_image_url }}" alt="" class="header-image" />
   </div>
 
   <div class="header">
-      <h1 class="main-heading">{{ manga.data.title }}</h1>
+    <h1 class="main-heading">{{ manga.data.title }}</h1>
     <app-star [rating]="manga.data.score"></app-star>
-      <span class="tag">Manga</span>
-      <span class="tag"> Score: {{ manga.data.score }}</span>
+    <span class="tag">Manga</span>
+    <span class="tag"> Score: {{ manga.data.score }}</span>
+    <ng-container *ngIf="manga.data.genres.length > 0">
       <span class="tag" *ngFor="let genre of manga.data.genres; let last = last">
-        {{genre.name}}
-        <ng-container *ngIf="!last">, </ng-container></span>
-
-    </div> <!-- END header -->
+        {{ genre.name }}
+        <ng-container *ngIf="!last">, </ng-container>
+      </span>
+    </ng-container>
+  </div> <!-- END header -->
 
   <div class="overlay-header"></div>
 
   <div class="body">
     <img src="{{ manga.data.images.jpg.image_url }}" alt="Hugh Jackman" class="body-image" />
 
-
     <div class="u-clearfix"></div>
     <div class="body-info">
-      <p>Chapters: {{manga.data.chapters}}</p>
+      <p>Chapters: {{ manga.data.chapters ? manga.data.chapters : (manga.data.volumes ? +manga.data.volumes * 30 : 'Unknown') }}</p>
       <p>
         {{ manga.data.synopsis }}
       </p>
-
     </div>
-
-
+  </div>
+</div>

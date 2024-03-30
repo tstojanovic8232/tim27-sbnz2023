@@ -14,11 +14,16 @@ import {BrowseMangaComponent} from "./browse-manga/browse-manga.component";
 import {SignupComponent} from "./signup/signup.component";
 import {LoginComponent} from "./login/login.component";
 import {ProfilComponent} from "./profil/profil.component";
+import {SectionComponent} from "./section/section.component";
+
 
 
 const routes: Routes = [
   {
     path: '', component: LandingPageComponent
+  },
+  {
+    path: 'sec', component: SectionComponent
   },
   {
     path: 'home', redirectTo: '', pathMatch: "full"

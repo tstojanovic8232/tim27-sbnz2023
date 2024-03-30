@@ -399,7 +399,13 @@ export class MangaService {
     return this.httpclient.get<ListResponseModel<Manga>>(this.mostpopular);
   }
 
+  getMostPopularMangasWithHighScore(): Observable<Manga[]> {
+    // Define the parameters for the HTTP request
+    const params = new HttpParams().set('score', '9'); // Filter manga with a score higher than 9
 
+    // Make the HTTP request with the defined parameters
+    return this.httpclient.get<Manga[]>(this.mostpopular, { params });
+  }
 
 
   getManga(id:number):Observable<ResponseModel>{

@@ -20,7 +20,13 @@ import { ProfilComponent } from './profil/profil.component';
 import { StarComponent } from './star/star.component';
 import { RegisterComponent } from './register/register.component';
 import { RegistrationSuccessComponent } from './registration-success/registration-success.component';
-
+import {IgxCarouselModule, IgxSliderModule} from "igniteui-angular";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BannerComponent } from './banner/banner.component';
+import { ComicComponent } from './comic/comic.component';
+import {MatSliderModule} from "@angular/material/slider";
+import { TopmangaComponent } from './topmanga/topmanga.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 
@@ -42,7 +48,11 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
     ProfilComponent,
     StarComponent,
     RegisterComponent,
-    RegistrationSuccessComponent
+    RegistrationSuccessComponent,
+    BannerComponent,
+    ComicComponent,
+    TopmangaComponent,
+    CategoriesComponent
 
   ],
     imports: [
@@ -51,7 +61,12 @@ import { RegistrationSuccessComponent } from './registration-success/registratio
         RouterModule,
         HttpClientModule,
         NgxPaginationModule,
-        FormsModule
+      BrowserAnimationsModule,
+        FormsModule,
+      IgxCarouselModule,
+      IgxSliderModule,
+      MatSliderModule
+
 
 
     ],
