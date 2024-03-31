@@ -1,6 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {concat, forkJoin, map, mergeMap, Observable, reduce, ReplaySubject, shareReplay, tap, timer} from "rxjs";
+import {
+  catchError,
+  concat,
+  forkJoin,
+  map,
+  mergeMap,
+  Observable,
+  reduce,
+  ReplaySubject,
+  shareReplay,
+  tap,
+  timer
+} from "rxjs";
 import {MangaComponent} from "./manga/manga.component";
 
 export interface Manga {
@@ -18,7 +30,7 @@ export interface Manga {
       large_image_url: string;
     };
   };
-  character:[{
+  characters:[{
     mal_id: number;
     url: string;
     images: {
@@ -216,7 +228,7 @@ export class MangaService {
   private mechaCache$: ReplaySubject<ListResponseModel<Manga>> = new ReplaySubject<ListResponseModel<Manga>>(1);
 
   apiUrl:string="https://api.jikan.moe/v4/manga";
-  mostpopular:string="https://api.jikan.moe/v4/manga";
+  mostpopular:string="https://api.jikan.moe/v4/top/manga?popularity";
   action:string="https://api.jikan.moe/v4/manga?genres=1&limit=25";
   advanture:string="https://api.jikan.moe/v4/manga?genres=2&limit=25";
   shojo:string="https://api.jikan.moe/v4/manga?genres=25";
@@ -232,6 +244,8 @@ export class MangaService {
   mecha:string="https://api.jikan.moe/v4/manga?genres=18";
   military:string="https://api.jikan.moe/v4/manga?genres=38";
   psychological:string="https://api.jikan.moe/v4/manga?genres=40";
+  private characters = 'https://api.jikan.moe/v4/manga';
+  private pop = 'https://api.jikan.moe/v4/top/manga';
   requestInterval = 4000;
   mangaData: any[] = [];
   private ListResponesModel: Manga | undefined;
@@ -259,6 +273,22 @@ export class MangaService {
     return this.httpclient.get<ListResponseModel<Manga>>(this.apiUrl);
   }
 
+  searchCharacters(query: string, page: number): Observable<any> {
+    const characterSearchUrl = `${this.apiUrl}/search/character`;
+    const fullUrl = `${characterSearchUrl}?q=${query}&page=${page}`;
+    return this.httpclient.get(fullUrl).pipe(
+      catchError((error: any) => {
+        throw error; // You may want to handle errors differently
+      })
+    );
+  }
+
+  // Method to fetch character data by ID
+  getCharacterManga(characterId: number): Observable<any> {
+    const url = `${this.characters}/${characterId}/characters`;
+    return this.httpclient.get<any>(url);
+  }
+
   getMangas(): Observable<ListResponseModel<Manga>> {
     const totalPages = 60;
     const mangaPerPage = 25;
@@ -277,6 +307,13 @@ export class MangaService {
       }, { data: [] as Manga[] })
     );
   }
+
+  getMangas2(page: number, limit: number): Observable<ListResponseModel<Manga>> {
+    const offset = (page - 1) * limit;
+    const url = `${this.pop}?page=${page}`;
+    return this.httpclient.get<ListResponseModel<Manga>>(url);
+  }
+
 
 
   getActionMangas(): Observable<ListResponseModel<Manga>> {

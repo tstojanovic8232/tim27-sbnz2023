@@ -27,6 +27,7 @@ import { ComicComponent } from './comic/comic.component';
 import {MatSliderModule} from "@angular/material/slider";
 import { TopmangaComponent } from './topmanga/topmanga.component';
 import { CategoriesComponent } from './categories/categories.component';
+import {PaginateComponent} from './paginate/paginate.component';
 
 
 
@@ -52,7 +53,8 @@ import { CategoriesComponent } from './categories/categories.component';
     BannerComponent,
     ComicComponent,
     TopmangaComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    PaginateComponent
 
   ],
     imports: [
@@ -60,7 +62,7 @@ import { CategoriesComponent } from './categories/categories.component';
         AppRoutingModule,
         RouterModule,
         HttpClientModule,
-        NgxPaginationModule,
+      NgxPaginationModule,
       BrowserAnimationsModule,
         FormsModule,
       IgxCarouselModule,

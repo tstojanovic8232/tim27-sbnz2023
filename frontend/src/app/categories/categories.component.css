@@ -10,15 +10,7 @@
 
 }
 
-/*.item{*/
-/*  display: inline-block;*/
-/*  min-height: 400px;*/
-/*  width: 60%;*/
-/*  background-position: center center;*/
-/*  background-repeat: no-repeat;*/
-/*  background-size: cover;*/
-/*  border-radius:15px;*/
-/*}*/
+
 
 /* Grid Item Hover Effect */
 /* Grid Item Hover Effect */
@@ -30,7 +22,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family:Khand;
-  clip-path: inset(0% 45% 0% 45% round 10px); /* Rounded corners */
+  /* Rounded corners */
   transition: transform 0.3s ease, filter 0.3s ease; /* Add transition for smooth effect */
   /*background:linear-gradient(#d53b3b,white);*/
 
@@ -39,7 +31,7 @@
 
 .item:hover {
   transform: scale(1.05); /* Increase scale to zoom in */
-  filter: opacity(80%); /* Apply filter effect */
+  filter: brightness(90%); /* Apply filter effect */
 
 }
 
@@ -71,6 +63,7 @@
   background-color: #bdc3c7;
   background-image: url("src/assets/img/shounen.jpg");
   background-position: center 20%;
+
 
 }
 
@@ -127,6 +120,7 @@
     /*clip-path: polygon(0 0, 80% 0, 100% 76.5%, 0 100%);*/
     margin-bottom: -93px;
     margin-right:4%;
+
 
   }
 
@@ -222,16 +216,19 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
+
 }
 
 .button:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 .item-button2 {
   position: absolute;
-  bottom: 60px;
-  left: 80px;
+  bottom: 80px;
+  left: 60px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -248,18 +245,20 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button2:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 /*** Floating Text ***/
 
 .item-button3 {
   position: absolute;
-  bottom: 190px;
-  left: 130px;
+  bottom: 180px;
+  left: 210px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -276,12 +275,14 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button3:hover {
   border: 1px solid #ffffff;
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 
 .item-button4 {
@@ -304,11 +305,13 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button4:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 .item-button5 {
   position: absolute;
@@ -330,11 +333,13 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button5:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 
 
@@ -358,11 +363,13 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button6:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
 }
 
 .item-button7 {
@@ -385,9 +392,40 @@
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
+  text-shadow : 1px 1px black;
 }
 
 .button7:hover {
   background: rgb(255, 255, 255);
   color: #333;
+  text-shadow : none;
+}
+
+.item-button8 {
+  position: absolute;
+  bottom: 50px;
+  left:170px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.item:hover .item-button8 {
+  opacity: 1;
+}
+
+.button8 {
+  padding: 8px 16px;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  background: transparent;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow : 1px 1px black;
+}
+
+.button8:hover {
+  background: rgb(255, 255, 255);
+  color: #333;
+  text-shadow : none;
 }

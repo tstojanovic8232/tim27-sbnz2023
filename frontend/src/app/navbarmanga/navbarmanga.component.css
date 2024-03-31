@@ -25,6 +25,7 @@ a {
 
 nav {
   background-color: #0e141f;
+
   box-shadow: none; /* Remove the box shadow */
   height: 60px;
   line-height: 80px;

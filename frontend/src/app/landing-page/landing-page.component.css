@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap');
+
 body{
   background-color: #212529;
+
 }
 h1 {
   font-size: 4rem;
@@ -9,6 +12,7 @@ h1 {
   top: 20%;
   transform: translateX(-50%);
   white-space: nowrap;
+  font-family: Impact;
 }
 
 .button {

@@ -67,6 +67,9 @@ body{
 
 .list p{
   width: 300px hidden;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
 }
 #prev {
   display: inline-block;

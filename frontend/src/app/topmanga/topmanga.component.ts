@@ -10,7 +10,7 @@ export class TopmangaComponent {
   currentIndex: number = 0;
   mangas: Manga[] = [];
   p: number = 1;
-  count: number = 10;
+  count: number = 13;
   maxCount: number | any;
   itemsPerPage: number = 10;
 
