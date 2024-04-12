@@ -15,6 +15,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {LoginComponent} from "./login/login.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {SectionComponent} from "./section/section.component";
+import {FooterComponent} from "./footer/footer.component";
 
 
 
@@ -23,7 +24,10 @@ const routes: Routes = [
     path: '', component: LandingPageComponent
   },
   {
-    path: 'sec', component: SectionComponent
+    path: '', component: FooterComponent
+  },
+  {
+    path: 'sec/:id', component: SectionComponent
   },
   {
     path: 'home', redirectTo: '', pathMatch: "full"
@@ -39,6 +43,7 @@ const routes: Routes = [
     path:'browsemanga',component:BrowseMangaComponent
   }
   ,{ path: 'manga/:id', component: MangaDetailsComponent},
+
   {
     path: 'signup', component: SignupComponent
   },

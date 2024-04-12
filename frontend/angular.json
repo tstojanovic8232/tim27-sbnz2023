@@ -97,7 +97,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/style.css",
+              "src/assets/bootstrap.min.css",
+              "src/assets/elegant-icons.css"
             ],
             "scripts": [
               "./node_modules/hammerjs/hammer.min.js"

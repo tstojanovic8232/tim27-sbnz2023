@@ -1,164 +1,106 @@
-<section class="xbox">
-  <div class="content">
-    <h2>Discover new manga</h2>
-    <p>Explore an extensive collection of manga series spanning diverse genres, including shounen, shoujo, seinen, romance, action, fantasy, and more.</p>
-    <a href="#" class="btn">Join Now <i class="fas fa-chevron-right"></i></a>
-  </div>
-  <div class="image"></div>
-</section>
+<app-navbarmanga></app-navbarmanga>
+
+<div class="anime-details spad">
+  <div class="container" *ngIf="manga">
+    <div class="anime__details__content">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="anime__details__pic ">
+            <img src="{{ manga.data.images.jpg.image_url }}">
+            <div class="comment"><i class="fa fa-comments"></i>{{reviews.length}}</div>
+            <div class="view"><i class="fa fa-eye"></i>{{ manga.data.scored_by }}</div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="anime__details__text">
+            <div class="anime__details__title">
+              <h3>{{ manga.data.title }}</h3>
+              <span>{{ manga.data.title_japanese }}</span>
+            </div>
+            <div class="anime__details__rating">
+              <div class="rating">
+                <app-star [rating]="manga.data.score"></app-star>
+              </div>
+              <span>{{ manga.data.score }} score</span>
+            </div>
+            <p>{{ manga.data.synopsis | slice:0:530 }}{{ manga.data.synopsis.length > 150 ? '...' : '' }}</p>
+            <div class="anime__details__widget">
+              <div class="row justify-content-left">
+                <div class="col-lg-6 col-md-6">
+                  <!-- Manga details list -->
+                  <ul class="genres-list">
+                    <li><span>Genres:</span></li>
+                    <li>
+                      <ng-container *ngIf="manga.data.genres.length > 0">
+                        <ng-container *ngFor="let genre of manga.data.genres">
+                          <span class="tag tag-sm d-inline-block text-center">{{ genre.name }}</span>
+                        </ng-container>
+                      </ng-container>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="anime__details__btn">
+              <a href="#" class="follow-btn slider-button"><i class="fa fa-heart-o"></i> Add to you list</a>
+              <a href="#" class="follow-btn slider-button"><span>Watch Now</span> </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <div class="row">
+        <div class="col-lg-8 col-md-8">
+          <div class="anime__details__review">
+            <div class="section-title">
+              <h5>Reviews</h5>
+            </div>
+            <div *ngFor="let review of reviews" class="anime__review__item">
+              <div class="anime__review__item__pic">
+                <img src="{{ review.user.images.jpg.image_url }}" alt="">
+              </div>
+              <div class="anime__review__item__text">
+                <h6>{{ review.user.username }} - <span>{{ review.date }}</span></h6>
+                <app-star [rating]="review.score"></app-star>
+                <p>{{ review.review }}</p>
+              </div>
+            </div>
+<!--            -->
+          </div>
+          <div class="anime__details__form">
+            <div class="section-title">
+              <h5>Your Comment</h5>
+            </div>
+            <form action="#">
+              <textarea placeholder="Your Comment"></textarea>
+              <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <div class="section-title">
+            <h5>you also might like...</h5>
+          </div>
 
+          <div class="anime__details__sidebar recommendations-container" *ngFor="let rec of recommendations.slice(0,15)">
 
+            <div class="product__sidebar__view__item recommendation-item">
+              <img *ngIf="rec.entry.images?.jpg?.image_url" [src]="rec.entry.images.jpg.image_url">
+              <div class="overlay">
+                <h5><a href="/sec/{{ rec.entry.mal_id }}">{{ rec.entry.title }}</a></h5>
 
+              </div>
+              <div class="view"><i class="fa fa-eye"></i>{{ rec.votes }}</div>
+            </div>
 
-
-<div class="wrapper">
-  <div class="news-item hero-item">
-  </div>
-  <div class="news-item standard-item">
-  </div>
-  <div class="news-item standard-item">
-  </div>
-  <div class="news-item standard-item">
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="item">
-    <div class="item-button">
-      <a href="#" class="button">View Details</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="item">
-    <div class="item-button2">
-      <a href="#" class="button2">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button3">
-      <a href="#" class="button3">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button4">
-      <a href="#" class="button4">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button5">
-      <a href="#" class="button5">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button6">
-      <a href="#" class="button6">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button7">
-      <a href="#" class="button7">View Details</a>
-    </div>
-  </div>
-  <div class="item">
-    <div class="item-button7">
-      <a href="#" class="button7">View Details</a>
-    </div>
-  </div>
-</div>
-
-<div class="text-box">
-  <span class="text">Stan Lee</span>
-  <span class="text">1922-2018</span>
-</div>
-
-<a class="link" href="https://codepen.io/simoberny/pen/qxxOqj" target="_blank">Dark Version</a>
-<div class="movie_card" id="bright">
-  <div class="info_section">
-    <div class="movie_header">
-      <img class="locandina" src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg"/>
-      <h1>Bright</h1>
-      <h4>2017, David Ayer</h4>
-      <span class="minutes">117 min</span>
-      <p class="type">Action, Crime, Fantasy</p>
-    </div>
-    <div class="movie_desc">
-      <p class="text">
-        Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.
-      </p>
-    </div>
-    <div class="movie_social">
-      <ul>
-        <li><i class="material-icons">share</i></li>
-        <li><i class="material-icons"></i></li>
-        <li><i class="material-icons">chat_bubble</i></li>
-      </ul>
-    </div>
-  </div>
-  <div class="blur_back bright_back"></div>
-</div>
-
-<div class="movie_card" id="tomb">
-  <div class="info_section">
-    <div class="movie_header">
-      <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/53750.jpg"/>
-      <h1>Tomb Raider</h1>
-      <h4>2018, Roar Uthaug</h4>
-      <span class="minutes">125 min</span>
-      <p class="type">Action, Fantasy</p>
-    </div>
-    <div class="movie_desc">
-      <p class="text">
-        Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.
-      </p>
-    </div>
-    <div class="movie_social">
-      <ul>
-        <li><i class="material-icons">share</i></li>
-        <li><i class="material-icons"></i></li>
-        <li><i class="material-icons">chat_bubble</i></li>
-      </ul>
-    </div>
-  </div>
-  <div class="blur_back tomb_back"></div>
-</div>
-
-<div class="movie_card bright_back" *ngFor="let manga of mangas">
-  <div class="info_section">
-    <div class="movie_header">
-      <img class="locandina" [src]="manga.images.jpg.image_url" />
-      <h1>{{ manga.title }}</h1>
-      <h4>{{ manga.year }}</h4>
-      <span class="minutes">{{ manga.duration }}</span>
-      <p class="type">{{ manga.genres.join(', ') }}</p>
-    </div>
-    <div class="movie_desc">
-      <p class="text">{{ manga.synopsis }}</p>
-    </div>
-    <div class="movie_social">
-      <ul>
-        <li><i class="material-icons">share</i></li>
-        <li><i class="material-icons"></i></li>
-        <li><i class="material-icons">chat_bubble</i></li>
-      </ul>
-    </div>
-  </div>
-  <div class="blur_back ave_back">
-    <img class="character" [src]="manga.characters[0].images" alt="First Character" />
   </div>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+<app-footer></app-footer>

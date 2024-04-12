@@ -65,13 +65,13 @@
           </div>
           <div class="item-details">
             <h3 class="book-item_title">{{manga.title}}</h3>
-            <p class="author" *ngFor="let author of manga.authors; let last = last">
-              {{ author.name }}
-              <ng-container *ngIf="!last">,</ng-container>
-            </p>
+<!--            <p class="author" *ngFor="let author of manga.authors; let last = last">-->
+<!--              {{ author.name }}-->
+<!--              <ng-container *ngIf="!last">,</ng-container>-->
+<!--            </p>-->
             <p>{{manga.synopsis}}</p>
-            <a routerLink="/manga/{{manga.mal_id}}" class="button ">Details</a>
-            <a routerLink="/manga/{{manga.mal_id}}" class="addbtn ">Add to your list</a>
+            <a routerLink="/sec/{{manga.mal_id}}" class="button ">Details</a>
+            <a routerLink="/sec/{{manga.mal_id}}" class="addbtn ">Add to your list</a>
           </div>
         </li>
       </ul>

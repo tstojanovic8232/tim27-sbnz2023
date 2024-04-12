@@ -10,7 +10,7 @@ import {
   reduce,
   ReplaySubject,
   shareReplay,
-  tap,
+  tap, throwError,
   timer
 } from "rxjs";
 import {MangaComponent} from "./manga/manga.component";
@@ -252,7 +252,25 @@ export class MangaService {
 
   constructor(private httpclient:HttpClient) { }
 
+  getMangaReviews(mangaId: number): Observable<any> {
+    const url = `${this.apiUrl}/${mangaId}/reviews`;
+    return this.httpclient.get<any>(url).pipe(
+      catchError(error => {
+        console.error('Error fetching manga reviews:', error);
+        return throwError(error);
+      })
+    );
+  }
 
+  getMangaReccommendations(mangaId: number): Observable<any> {
+    const url = `${this.apiUrl}/${mangaId}/recommendations`;
+    return this.httpclient.get<any>(url).pipe(
+      catchError(error => {
+        console.error('Error fetching manga reviews:', error);
+        return throwError(error);
+      })
+    );
+  }
 
   getMangaData(): Observable<ListResponseModel<Manga>> {
     const totalPages = 3;
@@ -352,6 +370,7 @@ export class MangaService {
     return this.httpclient.get<ListResponseModel<Manga>>(this.psychological);
   }
   getMilitary(): Observable<ListResponseModel<Manga>> {
+
     // const params = new HttpParams()
     //   .set('genres', '30') // Set the 'genres' parameter to '30' for sports manga
     //   .set('order_by', 'asc'); // Set the 'order_by' parameter to 'asc' for ascending order

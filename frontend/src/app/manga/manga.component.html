@@ -1,3 +1,4 @@
+
 <app-navbarmanga></app-navbarmanga>
 <div class="split" >
 
@@ -25,45 +26,19 @@
 </div>
 
 
-
-<app-banner>
-  <div class="slider-text">Welcome!</div>
-</app-banner>
-
-
-
-
 <app-topmanga></app-topmanga>
-
-
+<app-banner>
+</app-banner>
 <app-categories></app-categories>
 
-<!--<section >-->
+<app-footer></app-footer>
 
-<!--  <div class="row">-->
 
-<!--    <div class="book-cards" *ngFor="let manga of mangas | paginate: {id:'mal_id', itemsPerPage:count, currentPage:p, totalItems:maxCount}">-->
-<!--      <div class="book-card">-->
 
-<!--          <a routerLink="/manga/{{manga.mal_id}}">-->
-<!--            <img src="{{manga.images.jpg.image_url}}" alt="" class="book-card-img">-->
-<!--          </a>-->
-<!--          <div class="card-content">-->
-<!--            <div class="book-name">{{manga.title}} <app-star [rating]="manga.score"></app-star></div>-->
-<!--            <hr>-->
-<!--            <div class="book-by">-->
-<!--              <span *ngFor="let author of manga.authors; let last = last">-->
-<!--                    {{author.name.replace(',','').trim()}}-->
-<!--                <ng-container *ngIf="!last">, </ng-container>-->
-<!--                  </span>-->
-<!--            </div>-->
 
-<!--          </div>-->
-<!--      </div>-->
-<!--    </div>-->
 
-<!--  </div>-->
-<!--</section>-->
+
+
 
 
 

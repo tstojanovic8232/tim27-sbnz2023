@@ -1,12 +1,12 @@
 .xbox {
   display: grid;
-  margin-top:100px;
-  margin-left: 150px;
+  margin-top:10px;
+  margin-left: 380px;
   grid-template-columns: 1fr 1fr; /* Two equal columns */
-  height: 350px;
-  width: 85%;
+  height: 250px;
+  width: 60%;
   margin-bottom: 20px;
-  background: linear-gradient(to left, #1c3d63, #05c9c9);
+  background: linear-gradient(to right, #134f83, #154141);
   border-radius: 15px;
 }
 
@@ -17,17 +17,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .content h2 {
   font-family:Khand;
   letter-spacing: 2px;
   font-style:italic;
+  color: white;
   margin-bottom: 10px;
 }
 .content p{
   font-family:Khand;
+  color: white;
 }
 
 .image {
@@ -50,7 +52,7 @@
   border: 2px solid #fff;
   color: #fff;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 17px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   border-radius:15px;

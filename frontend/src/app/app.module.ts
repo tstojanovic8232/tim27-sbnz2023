@@ -28,6 +28,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import { TopmangaComponent } from './topmanga/topmanga.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {PaginateComponent} from './paginate/paginate.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -54,7 +55,8 @@ import {PaginateComponent} from './paginate/paginate.component';
     ComicComponent,
     TopmangaComponent,
     CategoriesComponent,
-    PaginateComponent
+    PaginateComponent,
+    FooterComponent
 
   ],
     imports: [
