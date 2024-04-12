@@ -12,10 +12,13 @@ Technologies Used:
 ● Spring Boot: Backend framework supporting server-side logic and integrations, facilitating seamless communication with the Jikan API and enhancing platform functionality.
 
 ![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/4713190d-bacd-45f0-82e7-8ac3f7899f58)
-![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/c65955ff-6c82-4bcc-924d-3be205692306)
+![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/4955be51-3ed9-425d-a888-64d88060daf5)
 
-![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/45b6d8f2-e80b-4580-96ee-e8e3047ff4c4)
 
-![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/5342287b-5cfc-48a9-88ec-60139346f808)
+![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/d9f9543a-b48c-42f4-8c3a-b6abeb9ca786)
+
+
+![image](https://github.com/tstojanovic8232/tim27-sbnz2023/assets/103071674/2d3d6ca1-c7d5-4c48-9eab-3567d5b2cc57)
+
 
 
