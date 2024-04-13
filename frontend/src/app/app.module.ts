@@ -29,6 +29,7 @@ import { TopmangaComponent } from './topmanga/topmanga.component';
 import { CategoriesComponent } from './categories/categories.component';
 import {PaginateComponent} from './paginate/paginate.component';
 import { FooterComponent } from './footer/footer.component';
+import { CharacterdetailsComponent } from './characterdetails/characterdetails.component';
 
 
 
@@ -56,7 +57,8 @@ import { FooterComponent } from './footer/footer.component';
     TopmangaComponent,
     CategoriesComponent,
     PaginateComponent,
-    FooterComponent
+    FooterComponent,
+    CharacterdetailsComponent
 
   ],
     imports: [

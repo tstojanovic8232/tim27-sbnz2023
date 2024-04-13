@@ -16,6 +16,7 @@ import {LoginComponent} from "./login/login.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {SectionComponent} from "./section/section.component";
 import {FooterComponent} from "./footer/footer.component";
+import {CharacterdetailsComponent} from "./characterdetails/characterdetails.component";
 
 
 
@@ -28,6 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'sec/:id', component: SectionComponent
+  },{
+    path: 'char/:id', component: CharacterdetailsComponent
   },
   {
     path: 'home', redirectTo: '', pathMatch: "full"

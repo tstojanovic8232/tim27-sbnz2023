@@ -11,11 +11,7 @@ import {Location} from "@angular/common";
 
 })
 export class SectionComponent {
-  imageUrl: string = "src/assets/images/manga.jpg"; // Set default image URL
-  commentCount: number = 11; // Set default comment count
-  viewCount: number = 9141; // Set default view count
-  animeTitle: string = "Fate Stay Night: Unlimited Blade"; // Set default anime title
-  animeSubtitle: string = "フェイト／ステイナイト, Feito／sutei naito"; // Set default anime subtitle
+
 
   manga: ResponseModel | undefined;
   reviews: any[] = [];
@@ -34,6 +30,7 @@ export class SectionComponent {
     this.getAnime();
     this.animeService.getMangaReviews(this.route.snapshot.params['id']).subscribe(reviews => {
       this.reviews = reviews.data;
+      console.log(this.reviews);
   }, error => {
     console.error('Error fetching manga reviews:', error);    // Handle error if needed
   })
@@ -43,6 +40,10 @@ export class SectionComponent {
     }, error => {
       console.error('Error fetching manga reviews:', error);    // Handle error if needed
     })
+    const mangaId = 2; // ID of the manga you're interested in
+    const apiUrl = `https://api.jikan.moe/v4/characters/422`;
+
+
 
   }
 
@@ -59,15 +60,15 @@ export class SectionComponent {
       }
     );
 
-    this.animeService.getMangaReviews(id).subscribe(
-      (response: any) => {
-        this.reviews = response.reviews;
-        console.log('Reviews:', this.reviews);
-      },
-      (error: any) => {
-        console.error('Error fetching manga reviews:', error);
-      }
-    );
+    // this.animeService.getMangaReviews(id).subscribe(
+    //   (response: any) => {
+    //     this.reviews = response.reviews;
+    //     console.log('Reviews:', this.reviews);
+    //   },
+    //   (error: any) => {
+    //     console.error('Error fetching manga reviews:', error);
+    //   }
+    // );
   }
 
   getCharacterManga(malId: number): void {
@@ -88,10 +89,5 @@ export class SectionComponent {
       }
     );
   }
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
+
 }

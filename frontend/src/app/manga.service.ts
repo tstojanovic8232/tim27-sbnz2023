@@ -228,6 +228,7 @@ export class MangaService {
   private mechaCache$: ReplaySubject<ListResponseModel<Manga>> = new ReplaySubject<ListResponseModel<Manga>>(1);
 
   apiUrl:string="https://api.jikan.moe/v4/manga";
+  character:string="https://api.jikan.moe/v4/characters";
   mostpopular:string="https://api.jikan.moe/v4/top/manga?popularity";
   action:string="https://api.jikan.moe/v4/manga?genres=1&limit=25";
   advanture:string="https://api.jikan.moe/v4/manga?genres=2&limit=25";
@@ -476,6 +477,10 @@ export class MangaService {
   }
 
 
+  getCharacterDetails(characterId: number): Observable<any> {
+    const url = `${this.character}/${characterId}/full`;
+    return this.httpclient.get<any>(url);
+  }
 
 }
 
